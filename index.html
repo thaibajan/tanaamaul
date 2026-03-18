@@ -380,7 +380,18 @@ function buildChart() {
     }
   });
 }
-buildChart();
+buildChart();function toggleProjects(e) {
+  e.preventDefault();
+  var sub = document.getElementById('projectsSub');
+  var chevron = e.currentTarget.querySelector('svg:last-child');
+  if (sub.style.display === 'none') {
+    sub.style.display = 'block';
+    chevron.style.transform = 'rotate(180deg)';
+  } else {
+    sub.style.display = 'none';
+    chevron.style.transform = 'rotate(0)';
+  }
+}
 </script>
 </body>
 </html>
