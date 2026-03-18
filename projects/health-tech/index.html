@@ -175,6 +175,43 @@
     .section-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
     .section-tags .tag { font-size: 11px; }
 
+    /* Prototype section */
+    .prototype-section {
+      max-width: 1080px;
+      margin: 0 auto; padding: 64px 32px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .prototype-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .prototype-text .section-num { margin-bottom: 12px; }
+    .prototype-text .section-title { margin-bottom: 16px; }
+    .prototype-text .section-body { max-width: 480px; }
+    .prototype-frame {
+      display: flex;
+      justify-content: center;
+    }
+    .prototype-frame iframe {
+      width: 420px;
+      height: 880px;
+      border: none;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .prototype-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 20px;
+      font-size: 14px; font-weight: 500;
+      color: var(--accent-light);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .prototype-link:hover { opacity: 0.7; }
+    .prototype-link svg { width: 16px; height: 16px; }
+
     .footer {
       max-width: var(--max-w); margin: 0 auto;
       padding: 48px 32px; border-top: 1px solid var(--border);
@@ -201,6 +238,16 @@
       .prose-section { padding: 48px 20px; }
       .hero-meta { gap: 20px; }
       .nav { padding: 14px 20px; }
+      .prototype-section { padding: 48px 20px; }
+      .prototype-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .prototype-frame iframe {
+        width: 100%;
+        max-width: 390px;
+        height: 780px;
+      }
     }
 
     @media (prefers-reduced-motion: no-preference) {
@@ -225,15 +272,15 @@
       <h1 class="hero-title">Personalised health based on your biochemistry: the preventative approach</h1>
       <div class="hero-desc">
         <p>I'm deep into health and wellbeing. Over the last few years I've worked closely 
-        with health coaches and practitioners, and I've seen the same pattern over and over: 
-        someone gets blood work done, receives a PDF of 100+ biomarkers, and has no idea 
-        what to do with any of it.</p>
-        <p>I've been deep-diving into Claude and realised it 10x's the entire UX and product 
-        development lifecycle. So I used real use cases from what I've observed - typical 
-        client lifecycles, how check-ins happen, where the gaps are - and mocked up a concept.</p>
-        <p>The objective was simple: use AI to enhance the customer journey, not create distance 
-        between customer and practitioner to boost margins while the experience suffers. 
-        Preventative medicine is the future, and there's so much scope to get this right.</p>
+        with health coaches and functional medicine practitioners, and I noticed a pattern 
+        in the health industry: someone gets blood work done, receives a PDF of biomarkers, 
+        and has no idea what to do with any of it.</p>
+        <p>One day I had a Eureka moment for an app that would bring this all together. I've 
+        been deep-diving into Claude and it's been an absolute gem bringing my ideas to life - 
+        while 3-5xing the process. An absolute joy to work with!</p>
+        <p>The objective was to design an app that I would use - something that would keep me 
+        on track 24/7 - so that I'm always moving the needle health-wise and underpinned 
+        by data.</p>
       </div>
       <div class="tag-row">
         <span class="tag">Health tech</span>
@@ -274,17 +321,20 @@
   <div class="prose-section fade-up">
     <div class="prose-inner">
       <div class="section-num">Backstory</div>
-      <h2 class="section-title">Why I believe preventative health is the future</h2>
+      <h2 class="section-title">Preventative health is the future</h2>
       <div class="section-body">
-        <p>It started during the pandemic. People I'd gone to school with - who'd gone into 
-        conventional medicine - were starting to specialise in preventative, root-cause approaches. 
-        I discovered Dr Mark Hyman, one of the founders of Function Health, and went deep on 
-        his podcasts, books, and audiobooks. It became a North Star for how I think about 
-        personal wellbeing.</p>
-        <p>The natural health path can feel a bit fluffy. Conventional medicine has the rigour 
-        but is often reactive. The best practitioners combine both: evidence-based reasoning 
-        with a holistic, root-cause angle. That's what motivated this project - how do you 
-        make that quality of thinking accessible through technology without losing the nuance?</p>
+        <p>It's well documented that since the pandemic there's been a rebellious counterculture 
+        for wellbeing. I noticed old school and uni mates who were practising physicians started 
+        to specialise in preventative, root-cause approaches. I discovered Dr Mark Hyman, one 
+        of the founders of Function Health, and went deep on his podcasts, books, and audiobooks. 
+        It became a North Star for how I thought about health from that point onwards.</p>
+        <p>I spent time in Bali with some of the leading holistic health practitioners and realised 
+        that naturopathy and stuff like TCM can feel a bit fluffy. Conventional medicine has the 
+        rigour but is often reactive.</p>
+        <p>Any time I've seen someone genuinely heal from a chronic condition or send their condition 
+        into remission, it's been through merging both worlds: evidence-based interventions with a 
+        holistic, root-cause angle.</p>
+        <p>How do we ensure data-driven precision in health without losing the nuance?</p>
       </div>
     </div>
   </div>
@@ -299,12 +349,11 @@
         exported from Claude as HTML, used a Figma-to-HTML plugin to bring it in, refined 
         the UI, then brought it back into Claude to keep iterating. I didn't want it to look 
         like something Lovable spat out in five seconds.</p>
-        <p>I also added habit tracking and coach booking - a lower rate than a doctor, but real 
-        human accountability on demand. Combined with pattern-level biomarker insights and a 
-        sequenced roadmap, it genuinely gives the user power over their health journey. For the 
-        UI, I used Tailwind UI as a base with calm colours and a serif/sans-serif pairing for a 
-        clean, clinical feel. This was really just about doing something for fun and seeing how 
-        far I could push the concept.</p>
+        <p>For the UI, I used Tailwind UI as a base with calm colours and a serif/sans-serif 
+        pairing for a clean, clinical feel. This was really just about doing something for fun 
+        and seeing how far I could push the concept.</p>
+        <p>After this ideation, I added UX Design and UX Copywriting skills to Claude that would 
+        have accelerated the process and cut the initial back and forth. But we live and we learn.</p>
       </div>
     </div>
   </div>
@@ -314,14 +363,15 @@
       <div class="section-num">01</div>
       <h2 class="section-title">Start with what matters today</h2>
       <div class="section-body">
-        <p>Most health apps dump you into a wall of data. I wanted the home screen to feel 
-        like a coach checking in - your adherence this week, what your body's been doing, 
-        the one thing to focus on next.</p>
-        <p>Cronometer was a huge inspiration - I use it daily for macros and love the 
-        micronutrient features. But it becomes really powerful when you combine nutrition 
-        data with your biochemistry, plus supplement tracking. Your nutrition, supplements, 
-        and blood work - all correlated, feeding into a roadmap so you're always working 
-        towards a specific goal.</p>
+        <p>Post-blood test, some labs dump you into a wall of data. I wanted the home screen 
+        to feel like a coach checking in, simplified and removing the overwhelm: such as your 
+        adherence this week, what your body's been doing, the one thing to focus on next.</p>
+        <p>Cronometer was a huge inspiration in this process. I use it daily for macros and love 
+        the micronutrient features. But it becomes really powerful when you combine nutrition data 
+        with your biochemistry, plus habit/supplement tracking. Your nutrition, supplements, and 
+        blood work - all correlated, feeding into a phased roadmap, the ability to monitor 
+        biofeedback and book sessions with your coach would be the one stop shop for optimising 
+        health.</p>
       </div>
       <div class="section-tags">
         <span class="tag">Dashboard</span>
@@ -334,15 +384,17 @@
   <div class="prose-section fade-up">
     <div class="prose-inner">
       <div class="section-num">02</div>
-      <h2 class="section-title">Two-minute check-ins your practitioner actually reads</h2>
+      <h2 class="section-title">Consolidated practitioner-client check-ins</h2>
       <div class="section-body">
-        <p>Having worked alongside practitioners, I've seen how check-ins actually happen - 
-        WhatsApp messages, voice notes, the odd email. Information gets lost, context gets 
-        missed, and the practitioner asks the same questions every call.</p>
-        <p>I designed a structured weekly check-in - one question per screen, dial ratings, 
-        multi-select for symptoms. Two minutes. The practitioner gets clean data they can 
-        review before a call instead of scrolling a chat thread. Technology enhancing the 
-        relationship, not replacing it.</p>
+        <p>Having worked alongside coaches and practitioners, I've seen how check-ins happen in 
+        real time. These are core components of an individual's health journey and it's what helps 
+        keep them on track week in week out. I also saw an opportunity to streamline the process 
+        even further and reduce the repetition that can occur after regular sessions and the 
+        ability for data to be centralised.</p>
+        <p>I designed structured weekly check-ins - one question per screen, dial ratings, 
+        multi-select for symptoms. Finished in minutes. The coach/practitioner gets clean data 
+        they can review before a call instead of scrolling a chat thread. Technology enhancing 
+        the relationship, rather than replacing it.</p>
       </div>
       <div class="section-tags">
         <span class="tag">Check-in flow</span>
@@ -359,10 +411,9 @@
       <div class="section-body">
         <p>The supplement stack alone can be overwhelming - zinc bisglycinate before bed, raw 
         ginger before meals, specific proteins at specific times. Most people fall off within 
-        a fortnight.</p>
-        <p>I kept the habit tracker simple. Weekly grid, streak count, category filters. No 
-        gamification guilt trips. Just quiet checkmarks that accumulate - the kind of thing 
-        that makes you think "yeah, I can do another week."</p>
+        a fortnight without the right accountability and system.</p>
+        <p>I kept the habit tracker simple. Weekly grid, streak count, category filters. It's 
+        something that could be expanded on, but a great v1.</p>
       </div>
       <div class="section-tags">
         <span class="tag">Habit tracking</span>
@@ -377,14 +428,16 @@
       <div class="section-num">04</div>
       <h2 class="section-title">The right thing at the wrong time can do more harm than good</h2>
       <div class="section-body">
-        <p>Most health apps give you everything at once and expect you to figure out sequencing. 
-        But order matters. If someone has leaky gut and you throw a parasitic cleanse at them, 
-        you can trigger endotoxemia - circulating more toxins when the body hasn't recovered. 
-        The right intervention in the wrong phase sets people back.</p>
-        <p>That's why the roadmap is phasic. One phase at a time, in the right order. Rebuild 
-        foundations first - digestion, nutrient absorption, daily rhythm - before optimisation. 
-        The "20% that gets 80% of results" section surfaces the highest-leverage habits so 
-        people know exactly where to start.</p>
+        <p>A lot of health protocols give you everything at once and expect you to figure out 
+        the correct order to do everything (or might not even be aware that that matters!).</p>
+        <p>The order 100% matters. For example, if someone has leaky gut and you throw an 
+        aggressive cleanse at them, you can trigger endotoxemia (circulates more toxins 
+        throughout the body) at a time when the body is already vulnerable. The right 
+        intervention at the wrong time does more harm than good.</p>
+        <p>That's why I designed a phasic roadmap. One phase at a time, in the right order. 
+        Rebuild foundations first - digestion, nutrient absorption, daily rhythm - before 
+        optimisation. The '20% that gets 80% of results' card helps simplify for our busy 
+        modern lifestyle and designed to prevent overwhelm.</p>
       </div>
       <div class="section-tags">
         <span class="tag">Phasic protocols</span>
@@ -399,20 +452,44 @@
       <div class="section-num">05</div>
       <h2 class="section-title">Patterns, not isolated numbers</h2>
       <div class="section-body">
-        <p>I've had extensive blood work done myself. What actually works is looking at 
-        biomarkers through the lens of patterns and correlations - not one at a time - with 
-        the aim of longevity, not just disease avoidance. What's classed as "normal" 
-        testosterone today is historically very low compared to our ancestors.</p>
-        <p>I grouped everything into body systems - heart, metabolic, hormonal, liver, immune - 
-        with a traffic-light status on each. The real value is in the connections: elevated 
-        fasting glucose alongside raised HbA1c and HOMA-IR tells a different story than any 
-        one alone. Plain-language explanations backed by the latest research, optimised for 
-        longevity rather than just "within range."</p>
+        <p>What works is looking at biomarkers through the lens of patterns and correlations. 
+        The real value is in the connections. For example, elevated fasting glucose alongside 
+        raised HbA1c, AST and ALT tells a different story than any one of these markers alone. 
+        Similarly, low serum magnesium needs to be interpreted alongside other markers, since 
+        serum levels represent only approximately 0.1% of the body's total magnesium.</p>
+        <p>I grouped everything into body systems: heart, metabolic, hormonal, liver, immune, 
+        with a traffic light status on each. Balancing the clinical side with what's readable 
+        and digestible for the audience (a layman).</p>
       </div>
       <div class="section-tags">
         <span class="tag">Pattern recognition</span>
         <span class="tag">Optimal vs normal ranges</span>
         <span class="tag">Longevity-focused</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="prototype-section fade-up">
+    <div class="prototype-grid">
+      <div class="prototype-text">
+        <div class="section-num">Why I build things</div>
+        <h2 class="section-title">Ideate, build, learn</h2>
+        <div class="section-body">
+          <p>The process here was just to ideate quickly and bring a concept into something 
+          tangible. I believe the best way to get good at AI is to do - not consume course 
+          after course. I enjoy bringing concepts to life, and with this tech it's also the 
+          perfect way to sharpen your systems-based and critical thinking - both invaluable 
+          skills for the future.</p>
+          <p>Click through the interactive prototype to see the full UI in action - another 
+          thing that's so much faster in Claude.</p>
+        </div>
+        <a class="prototype-link" href="prototype.html" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+          Open prototype in new tab
+        </a>
+      </div>
+      <div class="prototype-frame">
+        <iframe src="prototype.html" title="Interactive prototype" loading="lazy"></iframe>
       </div>
     </div>
   </div>
