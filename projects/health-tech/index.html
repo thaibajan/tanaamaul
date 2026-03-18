@@ -86,35 +86,20 @@
     .hero-phone {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
     }
-    .phone {
-      width: 240px;
-      height: 490px;
-      background: #111;
-      border-radius: 36px;
-      padding: 10px;
-      position: relative;
-      flex-shrink: 0;
+    .hero-screen {
+      width: 280px;
+      border-radius: 24px;
+      overflow: hidden;
       box-shadow:
-        0 0 0 1px rgba(255,255,255,0.06),
-        0 20px 60px rgba(0,0,0,0.22),
-        0 4px 16px rgba(0,0,0,0.1);
+        0 20px 60px rgba(0,0,0,0.15),
+        0 4px 16px rgba(0,0,0,0.08);
+      flex-shrink: 0;
     }
-    .phone-notch {
-      position: absolute; top: 10px; left: 50%;
-      transform: translateX(-50%);
-      width: 80px; height: 22px; background: #111;
-      border-radius: 0 0 14px 14px; z-index: 10;
-    }
-    .phone-screen {
-      width: 100%; height: 100%;
-      border-radius: 26px; overflow: hidden;
-      background: #e8ede6;
-    }
-    .phone-screen img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: top;
+    .hero-screen img {
+      width: 100%;
+      height: auto;
       display: block;
     }
     .hero-label {
@@ -271,11 +256,8 @@
       </div>
     </div>
     <div class="hero-phone">
-      <div class="phone">
-        <div class="phone-notch"></div>
-        <div class="phone-screen">
-          <img src="screens/hero.png" alt="App preview">
-        </div>
+      <div class="hero-screen">
+        <img src="screens/hero.png" alt="App preview">
       </div>
     </div>
   </header>
