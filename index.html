@@ -23,6 +23,7 @@
   --grid-color: #e4e4e7;
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.04); --shadow-hover: 0 4px 16px rgba(0,0,0,0.06);
   --toggle-bg: #e4e4e7; --toggle-knob: #ffffff;
+  --overlay: rgba(0,0,0,0.3);
 }
 
 [data-theme="dark"] {
@@ -37,11 +38,13 @@
   --grid-color: #27272a;
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.2); --shadow-hover: 0 4px 16px rgba(0,0,0,0.3);
   --toggle-bg: #3f3f46; --toggle-knob: #fafafa;
+  --overlay: rgba(0,0,0,0.6);
 }
 
 body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-primary); display: flex; min-height: 100vh; transition: background 0.3s, color 0.3s; }
 
-.sidebar { width: 210px; min-height: 100vh; background: var(--bg-sidebar); border-right: 1px solid var(--border); padding: 24px 16px; display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; z-index: 10; transition: width 0.3s ease, padding 0.3s ease, background 0.3s, border-color 0.3s; overflow: hidden; }
+/* ===== SIDEBAR ===== */
+.sidebar { width: 210px; min-height: 100vh; background: var(--bg-sidebar); border-right: 1px solid var(--border); padding: 24px 16px; display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; z-index: 100; transition: width 0.3s ease, padding 0.3s ease, transform 0.3s ease, background 0.3s, border-color 0.3s; overflow: hidden; }
 .sidebar.collapsed { width: 0; padding-left: 0; padding-right: 0; border-right-color: transparent; }
 .sidebar.collapsed .sidebar-inner { opacity: 0; pointer-events: none; }
 .sidebar-inner { display: flex; flex-direction: column; min-width: 178px; height: 100%; opacity: 1; transition: opacity 0.2s ease; }
@@ -49,12 +52,25 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 .sidebar-header span { font-weight: 500; font-size: 16px; color: var(--text-primary); white-space: nowrap; }
 .sidebar-chevron { width: 16px; height: 16px; color: var(--text-muted); cursor: pointer; transition: transform 0.3s ease, color 0.2s; flex-shrink: 0; }
 .sidebar-chevron:hover { color: var(--text-primary); }
-.sidebar-open-btn { position: fixed; top: 28px; left: 16px; z-index: 11; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
-.sidebar-open-btn.visible { opacity: 1; pointer-events: auto; }
+
+/* Desktop open button (when sidebar collapsed) */
+.sidebar-open-btn { position: fixed; top: 28px; left: 16px; z-index: 99; width: 28px; height: 28px; display: none; align-items: center; justify-content: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+.sidebar-open-btn.visible { opacity: 1; pointer-events: auto; display: flex; }
 .sidebar-open-btn svg { width: 14px; height: 14px; color: var(--text-muted); }
 .sidebar-open-btn:hover { box-shadow: var(--shadow-sm); }
 .sidebar-open-btn:hover svg { color: var(--text-primary); }
 
+/* Mobile hamburger */
+.mobile-header { display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 90; background: var(--bg-sidebar); border-bottom: 1px solid var(--border); padding: 16px 20px; align-items: center; justify-content: space-between; transition: background 0.3s, border-color 0.3s; }
+.mobile-header span { font-weight: 500; font-size: 16px; color: var(--text-primary); }
+.hamburger { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: none; border: none; padding: 0; }
+.hamburger svg { width: 22px; height: 22px; color: var(--text-primary); }
+
+/* Mobile overlay */
+.sidebar-overlay { display: none; position: fixed; inset: 0; background: var(--overlay); z-index: 99; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; }
+.sidebar-overlay.active { opacity: 1; pointer-events: auto; }
+
+/* ===== SIDEBAR CONTENTS ===== */
 .theme-toggle { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; padding: 0 4px; }
 .theme-toggle svg { width: 14px; height: 14px; color: var(--text-muted); flex-shrink: 0; transition: color 0.2s; }
 .theme-toggle svg.active-icon { color: var(--accent); }
@@ -80,8 +96,10 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 .sidebar-about-link .avatar { width: 24px; height: 24px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
 .sidebar-about-link .avatar img { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; }
 
+/* ===== MAIN ===== */
 .main { margin-left: 210px; flex: 1; padding: 64px 48px; display: flex; flex-direction: row; gap: 48px; transition: margin-left 0.3s ease; }
 .main.expanded { margin-left: 0; }
+
 .left-col { width: 380px; flex-shrink: 0; display: flex; flex-direction: column; }
 .greeting { font-weight: 400; font-size: 20px; color: var(--text-secondary); line-height: 30px; margin-bottom: 8px; animation: fadeUp 0.5s ease both; }
 .headline { font-weight: 900; font-size: 64px; color: var(--text-primary); line-height: 70.4px; letter-spacing: -2px; margin-bottom: 8px; animation: fadeUp 0.5s ease 0.1s both; }
@@ -123,10 +141,62 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 .metric-desc { font-weight: 400; font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===== TABLET ===== */
+@media (max-width: 1024px) {
+  .main { flex-direction: column; gap: 32px; }
+  .left-col { width: 100%; }
+  .headline { font-size: 48px; line-height: 54px; }
+  .subhead { font-size: 32px; line-height: 36px; }
+  .radar-wrapper { max-width: 100%; }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  /* Show mobile header, hide desktop sidebar by default */
+  .mobile-header { display: flex; }
+  .sidebar { transform: translateX(-100%); width: 260px; border-right: none; box-shadow: 4px 0 24px rgba(0,0,0,0.1); }
+  .sidebar.mobile-open { transform: translateX(0); }
+  .sidebar.collapsed { transform: translateX(-100%); width: 260px; padding: 24px 16px; }
+  .sidebar.collapsed .sidebar-inner { opacity: 1; pointer-events: auto; }
+  .sidebar-chevron { display: none; }
+  .sidebar-open-btn { display: none !important; }
+
+  .main { margin-left: 0; padding: 80px 20px 32px; flex-direction: column; gap: 24px; }
+  .main.expanded { margin-left: 0; }
+  .left-col { width: 100%; }
+
+  .headline { font-size: 36px; line-height: 40px; letter-spacing: -1px; }
+  .subhead { font-size: 24px; line-height: 28px; letter-spacing: -0.5px; margin-bottom: 24px; }
+  .greeting { font-size: 16px; line-height: 24px; }
+
+  .left-buttons { flex-direction: row; gap: 10px; }
+  .btn-main { padding: 14px 18px; font-size: 14px; }
+
+  .card { padding: 20px; }
+  .exp-number { font-size: 24px; }
+
+  .radar-wrapper { max-width: 100%; height: 280px; }
+
+  .metrics-grid { grid-template-columns: 1fr; gap: 12px; }
+  .metric-number { font-size: 24px; }
+}
 </style>
 </head>
 <body>
 
+<!-- MOBILE HEADER -->
+<div class="mobile-header">
+  <span>Tanaa Maul</span>
+  <button class="hamburger" id="hamburgerBtn">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+  </button>
+</div>
+
+<!-- SIDEBAR OVERLAY (mobile) -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-inner">
   <div class="sidebar-header">
@@ -163,10 +233,12 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
   </div>
 </aside>
 
+<!-- Desktop open button -->
 <button class="sidebar-open-btn" id="sidebarOpenBtn">
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
 </button>
 
+<!-- MAIN CONTENT -->
 <main class="main" id="mainContent">
   <div class="left-col">
     <p class="greeting">Hello, I'm Tanaa</p>
@@ -208,13 +280,18 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 </main>
 
 <script>
-// Sidebar toggle
+// Elements
 const sidebar = document.getElementById('sidebar');
 const chevron = document.getElementById('sidebarChevron');
 const openBtn = document.getElementById('sidebarOpenBtn');
 const mainContent = document.getElementById('mainContent');
+const hamburger = document.getElementById('hamburgerBtn');
+const overlay = document.getElementById('sidebarOverlay');
+const isMobile = () => window.innerWidth <= 768;
 
+// Desktop sidebar collapse
 chevron.addEventListener('click', () => {
+  if (isMobile()) return;
   sidebar.classList.add('collapsed');
   mainContent.classList.add('expanded');
   openBtn.classList.add('visible');
@@ -224,6 +301,40 @@ openBtn.addEventListener('click', () => {
   sidebar.classList.remove('collapsed');
   mainContent.classList.remove('expanded');
   openBtn.classList.remove('visible');
+});
+
+// Mobile hamburger
+function openMobileMenu() {
+  sidebar.classList.add('mobile-open');
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileMenu() {
+  sidebar.classList.remove('mobile-open');
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+hamburger.addEventListener('click', () => {
+  if (sidebar.classList.contains('mobile-open')) {
+    closeMobileMenu();
+  } else {
+    openMobileMenu();
+  }
+});
+overlay.addEventListener('click', closeMobileMenu);
+
+// Close mobile menu on nav click
+document.querySelectorAll('.sidebar .nav-item').forEach(item => {
+  item.addEventListener('click', () => { if (isMobile()) closeMobileMenu(); });
+});
+
+// Handle resize
+window.addEventListener('resize', () => {
+  if (!isMobile()) {
+    closeMobileMenu();
+    sidebar.classList.remove('mobile-open');
+  }
 });
 
 // Theme toggle
@@ -245,6 +356,7 @@ toggle.addEventListener('click', () => {
   buildChart();
 });
 
+// Chart
 let radarChart;
 function buildChart() {
   const isDark = html.getAttribute('data-theme') === 'dark';
