@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personalised health based on your biochemistry: the preventative approach | Tanaa Maul</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafaf9;
+      --bg-surface: #ffffff;
+      --text-primary: #18181b;
+      --text-secondary: #52525b;
+      --text-tertiary: #a1a1aa;
+      --border: #e4e4e7;
+      --border-subtle: #f4f4f5;
+      --accent: #1f363d;
+      --accent-light: #40798c;
+      --font: 'DM Sans', system-ui, -apple-system, sans-serif;
+      --max-w: 1080px;
+      --phone-w: 260px;
+      --phone-h: 530px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #09090b;
+        --bg-surface: #18181b;
+        --text-primary: #fafaf9;
+        --text-secondary: #a1a1aa;
+        --text-tertiary: #71717a;
+        --border: #27272a;
+        --border-subtle: #1c1c1f;
+        --accent: #70a9a1;
+        --accent-light: #9ec1a3;
+      }
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(250,250,249,0.85);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    @media (prefers-color-scheme: dark) {
+      .nav { background: rgba(9,9,11,0.85); }
+    }
+    .nav-logo {
+      font-weight: 500; font-size: 14px;
+      color: var(--text-primary); text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-back {
+      font-size: 13px; color: var(--text-tertiary);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text-secondary); }
+
+    .hero {
+      padding: 140px 32px 80px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-content {}
+    .hero-phone {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-phone .phone {
+      width: 240px;
+      height: 490px;
+    }
+    .hero-phone .phone-screen {
+      border-radius: 26px;
+    }
+    .hero-phone .phone-notch {
+      width: 80px;
+      height: 22px;
+    }
+    .hero-phone .phone-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    .hero-label {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-label::before {
+      content: ''; width: 24px; height: 1.5px;
+      background: var(--accent-light);
+    }
+    .hero-title {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 500; line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px; max-width: 720px;
+    }
+    .hero-desc {
+      font-size: 17px; line-height: 1.75;
+      color: var(--text-secondary);
+      max-width: 620px; font-weight: 300;
+    }
+    .hero-desc p + p { margin-top: 14px; }
+    .hero-meta {
+      display: flex; gap: 32px; margin-top: 40px;
+      padding-top: 32px; border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .meta-label {
+      font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--text-tertiary);
+    }
+    .meta-value { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+
+    .section {
+      max-width: var(--max-w);
+      margin: 0 auto; padding: 64px 32px;
+    }
+    .section + .section { border-top: 1px solid var(--border-subtle); }
+
+    .showcase {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 64px; align-items: center;
+      min-height: 560px;
+    }
+    .showcase.reverse { grid-template-columns: 340px 1fr; }
+    .showcase.reverse .text-col { order: 2; }
+    .showcase.reverse .phone-col { order: 1; }
+
+    .section-num {
+      font-size: 12px; font-weight: 500;
+      color: var(--accent-light);
+      letter-spacing: 0.06em; margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 26px; font-weight: 500;
+      letter-spacing: -0.02em; line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-body {
+      font-size: 15px; line-height: 1.75;
+      color: var(--text-secondary); font-weight: 300;
+    }
+    .section-body p + p { margin-top: 12px; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .tag {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.04em; padding: 5px 12px;
+      border-radius: 100px; border: 1px solid var(--border);
+      color: var(--text-secondary); background: var(--bg);
+    }
+
+    .prose-section {
+      max-width: var(--max-w);
+      margin: 0 auto; padding: 64px 32px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .prose-inner {
+      max-width: 640px;
+    }
+    .prose-inner .section-body p + p { margin-top: 14px; }
+
+    .phone-col {
+      display: flex; justify-content: center;
+      align-items: center; position: relative;
+    }
+    .phone {
+      width: var(--phone-w); height: var(--phone-h);
+      background: #111; border-radius: 36px;
+      padding: 10px; position: relative; flex-shrink: 0;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.06),
+        0 20px 60px rgba(0,0,0,0.22),
+        0 4px 16px rgba(0,0,0,0.1);
+    }
+    .phone-notch {
+      position: absolute; top: 10px; left: 50%;
+      transform: translateX(-50%);
+      width: 90px; height: 24px; background: #111;
+      border-radius: 0 0 14px 14px; z-index: 10;
+    }
+    .phone-screen {
+      width: 100%; height: 100%;
+      border-radius: 28px; overflow: hidden;
+      background: #e8ede6;
+    }
+    .carousel-track {
+      display: flex; height: 100%;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .carousel-slide { min-width: 100%; height: 100%; }
+    .carousel-slide img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top; display: block;
+    }
+    .carousel-slide.scrollable {
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .carousel-slide.scrollable::-webkit-scrollbar { display: none; }
+    .carousel-slide.scrollable img {
+      width: 100%; height: auto;
+      object-fit: contain;
+    }
+
+    .phone-nav {
+      position: absolute; top: 50%;
+      left: -40px; right: -40px;
+      transform: translateY(-50%);
+      display: flex; justify-content: space-between;
+      pointer-events: none;
+    }
+    .phone-btn {
+      pointer-events: auto;
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--bg-surface);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.15s;
+      color: var(--text-secondary); font-size: 14px; line-height: 1;
+    }
+    .phone-btn:hover { background: var(--bg); border-color: var(--text-tertiary); }
+    .phone-btn:active { transform: scale(0.94); }
+
+    .phone-dots {
+      display: flex; gap: 5px; justify-content: center;
+      position: absolute; bottom: -32px;
+      left: 50%; transform: translateX(-50%);
+    }
+    .dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--text-tertiary); opacity: 0.35;
+      cursor: pointer; transition: all 0.3s;
+    }
+    .dot.active {
+      width: 18px; border-radius: 3px;
+      opacity: 1; background: var(--accent-light);
+    }
+
+    .footer {
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 48px 32px; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-text { font-size: 13px; color: var(--text-tertiary); }
+    .footer-link {
+      font-size: 13px; color: var(--text-secondary);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-link:hover { color: var(--text-primary); }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 120px 20px 60px;
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .hero-phone { order: -1; }
+      .section { padding: 48px 20px; }
+      .prose-section { padding: 48px 20px; }
+      .showcase, .showcase.reverse {
+        grid-template-columns: 1fr; gap: 40px; min-height: auto;
+      }
+      .showcase .phone-col,
+      .showcase.reverse .phone-col { order: -1; }
+      .showcase.reverse .text-col { order: 1; }
+      .hero-meta { gap: 20px; }
+      .nav { padding: 14px 20px; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-up {
+        opacity: 0; transform: translateY(24px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .fade-up.visible { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="/" class="nav-logo">Tanaa Maul</a>
+    <a href="/" class="nav-back">&larr; Back</a>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-label">Ideation session</div>
+      <h1 class="hero-title">Personalised health based on your biochemistry: the preventative approach</h1>
+      <div class="hero-desc">
+        <p>I'm deep into health and wellbeing — it's one of those things that's woven into 
+        everything I do. Over the last few years I've worked closely with health coaches and 
+        practitioners, and I've seen the same pattern play out over and over: someone gets 
+        extensive blood work done, receives a PDF of 100+ biomarkers, and has absolutely 
+        no idea what to do with any of it.</p>
+        <p>At the same time, I've been deep-diving into Claude and its many different features. 
+        I realised it pretty much 10x's the entire UX and product development lifecycle. What 
+        used to take me days of wireframing and iteration took a fraction of the time. So I 
+        used real use cases from what I've observed — typical client lifecycles, how check-ins 
+        happen, where the gaps are — and mocked up a concept.</p>
+        <p>My objective was simple: design a use case where technology enhances the customer's 
+        journey using AI, rather than what I see a lot of right now — AI being used to create 
+        distance between the customer and the practitioner, purely to boost margins, while the 
+        actual experience goes down the drain. I believe the future is preventative medicine, 
+        and there's so much scope to get this right.</p>
+      </div>
+      <div class="tag-row" style="margin-top: 24px;">
+        <span class="tag">Health tech</span>
+        <span class="tag">Critical thinking</span>
+        <span class="tag">Systems thinking</span>
+        <span class="tag">Design thinking</span>
+        <span class="tag">AI</span>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-item">
+          <span class="meta-label">What</span>
+          <span class="meta-value">Concept &amp; mockups</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Tools</span>
+          <span class="meta-value">Claude, Figma</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Time</span>
+          <span class="meta-value">Weekend project</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Status</span>
+          <span class="meta-value">Concept</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-phone">
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="screens/hero.svg" alt="App preview">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="prose-section fade-up">
+    <div class="prose-inner">
+      <div class="section-num">Backstory</div>
+      <h2 class="section-title">Why I believe preventative health is the future</h2>
+      <div class="section-body">
+        <p>It started during the pandemic, when there was a bit of a wellness boom. I noticed 
+        people I'd gone to school with — who'd gone into conventional medicine — starting to 
+        specialise in more preventative, root-cause approaches. Around the same time, I 
+        discovered Dr Mark Hyman, one of the founders of Function Health, and what he was 
+        saying about health was stuff I'd genuinely never heard before. I went deep — his 
+        podcast, his books, the audiobooks — and it became a kind of North Star for how I 
+        thought about personal wellbeing.</p>
+        <p>What I liked was the precision-based approach. When you go down the natural health 
+        path, it can sometimes feel a bit fluffy — good intentions but not always the clearest 
+        explanations. And with conventional medicine, you get the rigour but it's often reactive 
+        rather than preventative. The best practitioners I've encountered combine both: evidence-based 
+        reasoning alongside a holistic, root-cause angle. Best of both worlds. And that's what 
+        motivated this project — how do you take that quality of thinking and make it accessible 
+        through technology, without losing the nuance?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="prose-section fade-up">
+    <div class="prose-inner">
+      <div class="section-num">Process</div>
+      <h2 class="section-title">How Claude changed the way I build</h2>
+      <div class="section-body">
+        <p>Claude was instrumental from the very start — not just in the design work, but in 
+        the ideation. I used it to brainstorm different concepts, weigh up which idea to work 
+        on that day, and explore angles I hadn't considered. The general user flow was established 
+        fairly early on because I had a very clear problem in mind, but Claude helped me think 
+        through the details much faster than I would have alone.</p>
+        <p>For the actual mockups, it was a back-and-forth process. Claude would help me generate 
+        wireframe ideas, but it took a lot of customisation and iteration to get things where I 
+        wanted them. I didn't want it to look like something Lovable spat out in five seconds. 
+        This was a couple of months ago — before Figma MCP was even a thing — so what I ended up 
+        doing was exporting from Claude as HTML and using a Figma-to-HTML plugin to bring it into 
+        Figma, which I thought was brilliant. That let me refine the UI in a way that felt more 
+        personalised and intentional. Then I'd bring it back into Claude, back into Figma, and 
+        keep iterating.</p>
+        <p>The whole thing reinforced something I've been thinking a lot about lately: AI doesn't 
+        replace the craft, it accelerates it. You still need taste, you still need to know what 
+        good looks like, and you still need to push past the first output. But the speed at which 
+        you can move from idea to something tangible is genuinely different now.</p>
+        <p>Beyond the core screens, I also added a habit tracking section and the ability to book 
+        a session with your health coach — who would of course be at a much lower rate than an 
+        actual doctor. I thought that was a really clever way to build accountability into the 
+        whole experience. Here's what you know you need to do. Here's the interface that helps 
+        keep you accountable. And here's a real human who helps keep you accountable — all on 
+        demand. Combine that with the insights into each marker, the patterns they tell as a 
+        group, and a clear roadmap showing what to focus on in the right order, and you've 
+        genuinely given the user the power to stay on a consistent health journey. I thought 
+        that was really powerful.</p>
+        <p>In terms of the UI itself, I used Tailwind UI as a starting point but made it look 
+        slightly different from what I was seeing out there — calm, cool colours and a serif font 
+        paired with a sans-serif, which gives it a clean, clinical feel without going crazy 
+        design-wise. If I were to actually build this, I'd spend more time dialling in the design. 
+        But this was really just about doing something for fun and seeing how far I could push the 
+        concept in a short space of time.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section fade-up">
+    <div class="showcase">
+      <div class="text-col">
+        <div class="section-num">01</div>
+        <h2 class="section-title">Start with what matters today</h2>
+        <div class="section-body">
+          <p>Most health apps dump you into a wall of data. I wanted the home screen to feel 
+          more like a coach checking in — here's your adherence this week, here's what your 
+          body's been doing, here's the one thing to focus on next.</p>
+          <p>Cronometer's UI was a huge inspiration here — it's an app I use daily to track my 
+          own macros, and I love the micronutrient features. But what I realised is it becomes 
+          really powerful when you can combine that nutritional data with your actual biochemistry. 
+          And then if you add supplement tracking into the mix, you've got the full picture: your 
+          nutrition, your supplements, and your blood work — all correlated, feeding into a 
+          continued roadmap so you're always working towards a specific goal.</p>
+          <p>Because the reality is, health is fairly overwhelming. There are a million different 
+          things you could do that will move the needle. You need to know what they are and in 
+          what order. That's where it gives true power back to the user.</p>
+        </div>
+        <div class="tag-row">
+          <span class="tag">Dashboard</span>
+          <span class="tag">Nutrition</span>
+          <span class="tag">Wearable data</span>
+        </div>
+      </div>
+      <div class="phone-col">
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="carousel-track" data-carousel="home">
+              <div class="carousel-slide"><img src="screens/1.png" alt="Home dashboard"></div>
+              <div class="carousel-slide"><img src="screens/7.png" alt="Nutrition view"></div>
+            </div>
+          </div>
+        </div>
+        <div class="phone-nav">
+          <button class="phone-btn" onclick="slide('home',-1)">&#8249;</button>
+          <button class="phone-btn" onclick="slide('home',1)">&#8250;</button>
+        </div>
+        <div class="phone-dots" data-dots="home"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section fade-up">
+    <div class="showcase reverse">
+      <div class="text-col">
+        <div class="section-num">02</div>
+        <h2 class="section-title">Two-minute check-ins that your practitioner actually reads</h2>
+        <div class="section-body">
+          <p>This was the bit I was most interested in. Having worked alongside practitioners, 
+          I've seen how client check-ins actually happen — it's WhatsApp messages, voice notes, 
+          the odd email. Information gets lost, context gets missed between consultations, 
+          and the practitioner ends up asking the same questions every call.</p>
+          <p>I designed a structured weekly check-in — one question per screen, dial ratings for 
+          severity, multi-select for symptoms. Takes about two minutes. The practitioner gets 
+          clean, structured data they can review before a call instead of scrolling through 
+          a chat thread. Technology enhancing the relationship, not replacing it.</p>
+        </div>
+        <div class="tag-row">
+          <span class="tag">Check-in flow</span>
+          <span class="tag">Symptom tracking</span>
+          <span class="tag">Practitioner sync</span>
+        </div>
+      </div>
+      <div class="phone-col">
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="carousel-track" data-carousel="checkin">
+              <div class="carousel-slide"><img src="screens/15.png" alt="Check-in start"></div>
+              <div class="carousel-slide"><img src="screens/13.png" alt="Sleep quality"></div>
+              <div class="carousel-slide"><img src="screens/14.png" alt="Sleep disruption"></div>
+              <div class="carousel-slide"><img src="screens/12.png" alt="Digestive symptoms"></div>
+              <div class="carousel-slide"><img src="screens/10.png" alt="Cravings"></div>
+              <div class="carousel-slide"><img src="screens/11.png" alt="Bloating"></div>
+              <div class="carousel-slide"><img src="screens/9.png" alt="Check-in summary"></div>
+            </div>
+          </div>
+        </div>
+        <div class="phone-nav">
+          <button class="phone-btn" onclick="slide('checkin',-1)">&#8249;</button>
+          <button class="phone-btn" onclick="slide('checkin',1)">&#8250;</button>
+        </div>
+        <div class="phone-dots" data-dots="checkin"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section fade-up">
+    <div class="showcase">
+      <div class="text-col">
+        <div class="section-num">03</div>
+        <h2 class="section-title">Protocols are useless if you can't stick to them</h2>
+        <div class="section-body">
+          <p>Anyone who's been on a preventative health programme knows the supplement stack alone 
+          can be overwhelming — zinc bisglycinate before bed, raw ginger before meals, 
+          specific proteins at specific times. Most people fall off within a fortnight.</p>
+          <p>I kept the habit tracker deliberately simple. Weekly grid, streak count, category 
+          filters. No gamification guilt trips. Just quiet checkmarks that accumulate. 
+          The kind of thing that makes you think "yeah, I can do another week."</p>
+        </div>
+        <div class="tag-row">
+          <span class="tag">Habit tracking</span>
+          <span class="tag">Supplements</span>
+          <span class="tag">Streaks</span>
+        </div>
+      </div>
+      <div class="phone-col">
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="carousel-track" data-carousel="habits">
+              <div class="carousel-slide"><img src="screens/8.png" alt="Habits tracker"></div>
+            </div>
+          </div>
+        </div>
+        <div class="phone-dots" data-dots="habits"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section fade-up">
+    <div class="showcase reverse">
+      <div class="text-col">
+        <div class="section-num">04</div>
+        <h2 class="section-title">The right thing at the wrong time can do more harm than good</h2>
+        <div class="section-body">
+          <p>This is where most health apps completely fall apart. They give you everything 
+          at once — 30 recommendations, 12 supplements, a meal plan — and expect you to 
+          figure out sequencing on your own. But in preventative health, order matters. If 
+          someone has leaky gut and you throw a parasitic cleanse at them at the same time, 
+          you can trigger endotoxemia — circulating even more toxins through the bloodstream 
+          when the body hasn't had a chance to recover. Doing the right intervention in the 
+          wrong phase can genuinely set someone back.</p>
+          <p>That's why the roadmap is phasic. One phase at a time, in the right order, 
+          according to best practice. Rebuild the foundations first — 
+          digestion, nutrient absorption, daily rhythm — before you even think about 
+          optimisation. The "20% that gets 80% of results" section surfaces the highest-leverage 
+          habits at the top so people know exactly where to start. And a one-tap coach booking 
+          because sometimes you just need someone qualified to talk it through.</p>
+        </div>
+        <div class="tag-row">
+          <span class="tag">Phasic protocols</span>
+          <span class="tag">Sequenced interventions</span>
+          <span class="tag">Coach booking</span>
+        </div>
+      </div>
+      <div class="phone-col">
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="carousel-track" data-carousel="roadmap">
+              <div class="carousel-slide"><img src="screens/5.png" alt="Roadmap overview"></div>
+              <div class="carousel-slide scrollable"><img src="screens/Roadmap.png" alt="Phasic roadmap with Phase 1 and Phase 2"></div>
+            </div>
+          </div>
+        </div>
+        <div class="phone-nav">
+          <button class="phone-btn" onclick="slide('roadmap',-1)">&#8249;</button>
+          <button class="phone-btn" onclick="slide('roadmap',1)">&#8250;</button>
+        </div>
+        <div class="phone-dots" data-dots="roadmap"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section fade-up">
+    <div class="showcase">
+      <div class="text-col">
+        <div class="section-num">05</div>
+        <h2 class="section-title">Patterns, not isolated numbers</h2>
+        <div class="section-body">
+          <p>I've had extensive blood work done myself, so this one was personal. What I've 
+          realised about preventative health is that what actually works is looking at biomarkers 
+          not one at a time, but through the lens of patterns and correlations — and having 
+          someone qualified and certified interpret them with the aim of longevity, not just 
+          the avoidance of disease. What's classed as "normal" testosterone today, for example, 
+          is historically very low compared to our ancestors. There's no single source of truth, 
+          but a lot of people do heal from this approach when the data is read properly.</p>
+          <p>I grouped everything into body systems — heart, metabolic, hormonal, liver, immune — 
+          with a traffic-light status on each. But the real value is in the connections between 
+          them. Elevated fasting glucose alongside raised HbA1c and HOMA-IR tells a different 
+          story than any one of those markers alone. Drill in and you get plain-language 
+          explanations backed by the latest research, optimised for longevity rather than just 
+          "within range." There's so much power in making that accessible.</p>
+        </div>
+        <div class="tag-row">
+          <span class="tag">Pattern recognition</span>
+          <span class="tag">Optimal vs normal ranges</span>
+          <span class="tag">Longevity-focused</span>
+        </div>
+      </div>
+      <div class="phone-col">
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="carousel-track" data-carousel="insights">
+              <div class="carousel-slide scrollable"><img src="screens/Insights.png" alt="Insights categorised by body system"></div>
+              <div class="carousel-slide scrollable"><img src="screens/Metabolic_Health.png" alt="Metabolic health pattern detail"></div>
+              <div class="carousel-slide"><img src="screens/LDL.png" alt="Individual biomarker detail"></div>
+              <div class="carousel-slide"><img src="screens/2.png" alt="Insights overview"></div>
+              <div class="carousel-slide"><img src="screens/4.png" alt="Category breakdown"></div>
+              <div class="carousel-slide"><img src="screens/6.png" alt="Metabolic detail"></div>
+              <div class="carousel-slide"><img src="screens/3.png" alt="Biomarker detail"></div>
+            </div>
+          </div>
+        </div>
+        <div class="phone-nav">
+          <button class="phone-btn" onclick="slide('insights',-1)">&#8249;</button>
+          <button class="phone-btn" onclick="slide('insights',1)">&#8250;</button>
+        </div>
+        <div class="phone-dots" data-dots="insights"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span class="footer-text">&copy; 2026 Tanaa Maul</span>
+    <a href="/" class="footer-link">tanaamaul.com</a>
+  </footer>
+
+  <script>
+    const state = {};
+    document.querySelectorAll('[data-carousel]').forEach(track => {
+      const id = track.dataset.carousel;
+      const total = track.children.length;
+      state[id] = { idx: 0, total };
+      const dotsEl = document.querySelector(`[data-dots="${id}"]`);
+      if (dotsEl && total > 1) {
+        for (let i = 0; i < total; i++) {
+          const d = document.createElement('div');
+          d.className = 'dot' + (i === 0 ? ' active' : '');
+          d.onclick = () => { state[id].idx = i; update(id); };
+          dotsEl.appendChild(d);
+        }
+      }
+    });
+    function slide(id, dir) {
+      const s = state[id]; if (!s) return;
+      s.idx = (s.idx + dir + s.total) % s.total;
+      update(id);
+    }
+    function update(id) {
+      const s = state[id];
+      const track = document.querySelector(`[data-carousel="${id}"]`);
+      if (track) track.style.transform = `translateX(${-s.idx * 100}%)`;
+      const dots = document.querySelector(`[data-dots="${id}"]`);
+      if (dots) dots.querySelectorAll('.dot').forEach((d, i) => {
+        d.className = 'dot' + (i === s.idx ? ' active' : '');
+      });
+    }
+    document.querySelectorAll('.phone-screen').forEach(screen => {
+      let startX = 0;
+      const track = screen.querySelector('.carousel-track');
+      if (!track) return;
+      const id = track.dataset.carousel;
+      screen.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+      screen.addEventListener('touchend', e => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) slide(id, diff > 0 ? 1 : -1);
+      }, { passive: true });
+    });
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+    } else {
+      document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>
