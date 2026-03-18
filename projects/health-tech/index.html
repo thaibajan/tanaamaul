@@ -1,1255 +1,3 @@
-
-1773850573660_image.png
-I have a few screens that I want to write a quick article about it and add to my website. but I want to display the screens like this (inspo from a designers website) ... how would something like this be done?
-
-12:16
-Great reference — that's a clean layout with the phone mockup floating alongside the copy. There are a few ways to approach this depending on your setup. Let me break it down:
-
-The core technique is a two-column section where the left side has your text content and the right side has your screenshot placed inside a phone frame/bezel. The phone mockup effect is typically done one of two ways:
-
-CSS-only device frame — wrap your screenshot <img> in a <div> styled with rounded corners, a dark border, and a notch element at the top. No external assets needed.
-PNG/SVG phone bezel overlay — use a transparent phone frame image and position your screenshot behind it. Gives the most realistic result.
-For your portfolio site (single HTML file on Vercel), the CSS-only approach keeps things self-contained and lightweight.
-
-Want me to build you a reusable component for this? I'm thinking a section block you can drop into your site where you pass in a screen image and some copy, and it renders this layout — phone mockup on the right, text on the left, responsive so it stacks on mobile.
-
-A couple of quick questions before I build it:
-
-Q: How many screens/articles do you want to feature?
-A: 4+ screens, need a carousel or grid
-
-Q: Should I match your existing site's Zinc/dark-light mode style, or style it fresh for the article?
-A: Show me both options
-
-12:17
-Let me build both options so you can compare. I'll create a section with a phone mockup carousel — swipeable screens in a device frame with text alongside.
-
-
-Viewed 2 files
-Viewed 2 files
-Now let me build both options. I'll create two polished versions — one matching your Zinc portfolio style, one with a fresh editorial feel.
-
-Now let me build both options:
-
-
-
-And here's option B — a fresh editorial style with a warmer, more magazine-like feel:
-
-
-
-Here are both options side by side for you to compare:
-
-Option A (Zinc) matches your existing portfolio — neutral tones, sans-serif throughout, subtle borders, minimal. It'll blend seamlessly into your current site.
-
-Option B (Editorial) is a warmer, more magazine-like treatment — serif headline (Source Serif 4), lighter body weight (Sora), amber accent color, deeper phone shadow, and a dark screen interior that'll give your colourful app screens maximum pop.
-
-Both have the same mechanics: a CSS phone bezel with a carousel inside, left/right arrows, dot navigation, and responsive stacking on mobile. The placeholder slots are where your actual screenshots would go (just swap the placeholder divs for <img> tags).
-
-Which direction feels right? Once you pick, I can build the production-ready HTML block you can drop straight into your portfolio site.
-
-1 is better
-
-12:19
-Good call — the Zinc version will slot right into your site. Let me build the production-ready component. A few things before I code it up:
-
-Q: Do you have the screenshots ready to drop in?
-A: Yes, I'll upload them now
-
-Q: What format works best for your site?
-A: whats the difference ?
-
-12:39
-Good question — here's the practical difference:
-
-Standalone HTML section — A self-contained <section> block with its own <style> tag. You'd copy-paste it into your existing index.html wherever you want the article to appear. Lightest touch, no dependencies, works because your site is already a single HTML file.
-
-Full page/article template — A complete HTML page with its own head, nav, footer, etc. You'd deploy it as a separate route like tanaamaul.com/article/app-name. Better if you want a dedicated URL for the article, but means maintaining a second page.
-
-React .jsx component — A reusable React component you'd import. Only makes sense if you're using React with a build step, which your current Vercel setup doesn't need.
-
-Given your site is a single HTML file deployed on Vercel, the standalone HTML section is almost certainly the move — you just paste it in and it works. If you want a dedicated article page later, we can always extract it.
-
-Go ahead and upload your screenshots and I'll build it right into the component for you.
-
-lets go with the Full page/article template
-
-12:40
-Sounds good — a dedicated article page gives you a clean URL to share and keeps your main portfolio page focused. Upload your screenshots whenever you're ready and I'll build the full page with your screens embedded in the phone carousel.
-
-1.png
-15.png
-14.png
-12.png
-10.png
-13.png
-11.png
-9.png
-8.png
-7.png
-6.png
-5.png
-4.png
-3.png
-2.png
-12:44
-These look great — this is the Wellside app! 15 screens covering the full flow. Let me build the article page now.
-
-
-Ran 3 commands, viewed a file
-Ran 3 commands, viewed a file
-Now I'll organize the screens into logical groups and build the full article page. Looking at the screens, I can see clear sections: Home/Dashboard (1), Check-in flow (15, 13, 14, 12, 10, 11, 9), Habits (8), Roadmap (5), Nutrition (7), and Insights (2, 4, 6, 3).
-
-
-Created a file, ran a command, read a file
-Created a file, ran a command, read a file
-Here's your Wellside case study page. I organised your 15 screens into 5 story sections:
-
-Home dashboard — home + nutrition screens showing the daily experience
-Weekly check-in — the full 7-screen flow from intro through completion
-Habits — the streak-based daily tracker
-Roadmap — the phased protocol view
-Insights — the 4-screen drill-down from 130 biomarkers to individual markers
-Each section alternates left/right layout (like your inspo reference), with phone bezels, swipe/arrow navigation, dot indicators, and touch support on mobile. The page has scroll-reveal animations, dark/light mode support, and responsive stacking.
-
-To deploy it on Vercel, you'd drop the wellside-article folder into your repo — the index.html references images via relative screens/ paths, so the folder structure is self-contained. You could serve it at something like tanaamaul.com/wellside/.
-
-Want me to adjust any of the copy, reorder the screens, or tweak the styling?
-
-Index
-Code · HTML 
-the tone isnt a ux case study...i am actually putting this tigehter for my wesbite that showcases my role as a sales pesron...but i thought id just do fun projects on tehre as well. might just talk about it from the lens of a problem i notices many people are trying to solve with preventative health and how to integrate with data to have a compelling use case for an app....I am using claude every day and thought it'd be fun to mockup a quick solution that i would geuniley use
-
-12:48
-That's a much better angle — it's way more interesting as a personal project story than a formal case study. The narrative becomes: "I noticed a problem, I have domain knowledge, I used AI tools to prototype a real solution." That's compelling for your portfolio because it shows initiative, product thinking, and your functional health expertise — all without pretending to be a UX portfolio piece.
-
-Let me rewrite the copy with that voice. Before I do:
-
-Q: What tone feels right for the writing?
-A: Casual and personal (first person, conversational)
-
-Q: What should we call the app in the article?
-A: Keep it unnamed / generic
-
-12:49
-Perfect — casual first person, unnamed app, personal project energy. Let me rewrite the whole page with that framing.
-
-
-Created 2 files, ran a command, read a file
-Created 2 files, ran a command, read a file
-Completely different vibe now. The framing is "I noticed a problem in preventative health, I used Claude to prototype a solution I'd genuinely use" — which is way more interesting than a formal case study.
-
-Key changes from v1:
-
-Hero is now first-person: "I've spent the last few years deep in functional medicine..." with the punchline being you mocked this up over a weekend with Claude
-Meta bar says "Concept & mockups" / "Weekend project" / "Claude, Figma" instead of formal role/platform stuff
-Section titles are conversational: "Tell me what to do first", "Protocols are useless if you can't stick to them"
-The copy reads like you're explaining your thinking to someone over coffee, not presenting to a hiring panel
-App is unnamed throughout — it's just "the app" or "the home screen"
-The folder structure is self-contained (index.html + screens/ folder), ready to drop into your repo. Want me to tweak any of the copy or adjust the layout?
-
-Index
-Code · HTML 
-This is good. I would say use it more along the lines of you know? I'm deep into health and well-being in general. So this is there's no need to say both professionally and personally. And then you can say that I've been deep diving into Claude and the many different features. And I realized that it it pretty much tenexes the whole UX and product development life cycle. So in my days of mocking up wireframes, this took me a mere fraction of the time it would take me to do this. And I use use cases of what I have observed by work working with health coaches and practitioners in the industry. Over the last few years in terms of, like, a typical client life cycle, how check ins occur, I'm looking to my objective here was to implement a use case of technology to enhance a customer's journey using AI rather than what I see a lot of right now, which is using AI to create distance between the customer and to purely with the intention of boosting profits, but then the customer experience goes down the drain. So that's what this was all about. And just seeing a lot of blood work markers myself included. I actually had a lot of blood work done myself, so it was quite interesting seeing that connection of the many different gaps that a lot of us have with our daily habits And I really do believe that the future is about preventative medicine. There's so much scope
-
-Show more
-16:06
-That's a much richer story — and it positions you perfectly. Let me rewrite the hero and tweak the section copy to reflect all of that.
-
-
-Viewed 3 files
-Viewed 3 files
-Now I'll do targeted edits to rewrite the hero and section copy with your voice:
-
-
-Rewrite the hero with Tanaa's actual narrative about Claude, AI in health, and preventative medicine
-Rewrite the hero with Tanaa's actual narrative about Claude, AI in health, and preventative medicine
-Now let me update the check-in section to reference the real practitioner workflow you described:
-
-
-Rewrite check-in section to reference real practitioner workflows
-Rewrite check-in section to reference real practitioner workflows
-Now update the biomarker section to reference your own blood work experience:
-
-
-Edited a file, read a file
-Edited a file, read a file
-Updated. The key shifts in the copy:
-
-Hero now hits three beats: you're deep into health and wellbeing, you've been exploring Claude and realised it 10x's the product dev lifecycle, and your objective was specifically about using AI to enhance the customer-practitioner relationship — not to create distance and cut costs like you're seeing everywhere else. Closes with the preventative medicine conviction.
-
-Check-in section now references what you've actually observed — practitioners relying on WhatsApp threads and voice notes, information getting lost, the same questions being asked every call. The design solves a real workflow problem you've seen firsthand.
-
-Insights section now leads with "I've had extensive blood work done myself, so this one was personal" — which grounds it in your lived experience rather than abstract product thinking.
-
-The tone reads like someone who knows the space, built something because they cared about it, and used AI tooling to do it fast. Want me to adjust anything else?
-
-Index
-Code · HTML 
-Also mention what I see a lot of, and it's difficult in a functional medicine perspective, is you see there's no single source of truth. But a lot of people do heal from this. So what I do realize about medicine space is what tends to work is looking at biomarkers not just from one biomarker at a time lens, but looking more for patterns and correlations and having an expert, someone that's actually qualified and certified, look at it through an opt lens and backed by the latest data and research with the aim for longevity rather than just the avoidance of disease. So for example, what would be classed as an okay testosterone is actually historically very low compared to our ancestors. So just being able to to dial into, you know, the research of what will yield the most the most optimal health outcomes from a longevity perspective. There's so much power in that. What's also great is being able to look at the patterns in a in a way where your you're you're making the road map from a in a phasic approach. So one phase at a time because given a pattern within your bloods if you implement the the the right thing at the wrong time, then you can end up doing more harm than good. So for example, if you had if if you were to do you had leaky gut and you did a parasitic cleanse at the same time, then that could lead to endotoxemia, which was up circulating even more toxins in the bloodstream when your body has already not really had that chance to recover. So the beauty of the the app ui was it implemented the roadmap in a phasic manner and in the right order according to functional medicine best practice
-
-Show more
-16:11
-This is gold — it's the kind of domain depth that makes the whole project credible. Let me weave this into the roadmap and insights sections.
-
-
-Viewed a file, edited a file
-Viewed a file, edited a file
-Now rewrite the insights section with the patterns/correlations and longevity framing:
-
-
-Edited a file, read a file
-Edited a file, read a file
-Here's what changed:
-
-Section 04 (Roadmap) — title is now "The right thing at the wrong time can do more harm than good." Leads with the leaky gut + parasitic cleanse → endotoxemia example to show why sequencing matters. Explains the phasic approach: foundations first, optimisation later, in the correct order per functional medicine best practice.
-
-Section 05 (Insights) — title is now "Patterns, not isolated numbers." Covers the key points: looking at correlations not isolated markers, having a qualified practitioner interpret through an optimal lens, the longevity vs disease-avoidance distinction, the testosterone example about historically low "normal" ranges, and the metabolic pattern example (fasting glucose + HbA1c + HOMA-IR telling a bigger story together). Tags updated to "Pattern recognition," "Optimal vs normal ranges," "Longevity-focused."
-
-The whole thing reads like someone who knows this space deeply — not a designer writing a case study, but someone with conviction about where preventative health is heading. Want to tweak anything else?
-
-Index
-Code · HTML 
-Also, I'd like to give a personal backstory as well. Terms of how I was introduced to functional medicine during the pandemic when there was a bit of a wellness boom. I I noticed some some people that I actually went to school with, they became medical and I saw they actually started specializing in functional medicine. As well. So I became very interested in this, and I saw them share content from doctor Mark Hyman, who is the who is one of the founders of Function Health and that really piqued my interest because he was talking about things from a health lens that I'd never even heard before. So I really started deep diving into his podcast, and bought his book, listened to his audio book and everything, and that became sort of, like, my North Star for personal health and well-being, of course, amongst many other a lot of the other holistic lifestyle, but I like the precision based approach. So what what I'm what I'm learning here, you know, is functional medicine is the future. And I I have seen different style of practitioners with different degrees of capability, but someone like doctor Mark Hyman is is great because, you know, he spent years in his craft and he is actually certified And there's definitely a lot of good practitioners out there, and I find that when you when you when you combine the the when when you go down the natural path route, sometimes can be a little bit of fluff, a little bit woo woo. You don't always get the most clear definitions and explanations. But with conventional medicine, it's more from a preventative lens. So what's great is it's functional medicine from know someone who knows what they're talking about, you do get the evidence based approach as well as the holistic and root-cause angle. best of both worlds
-
-Show more
-16:15
-Love that — it gives the whole project a real origin story. Let me add a personal backstory section right after the hero, before the screens start.
-
-
-Find the exact insertion point after the hero closing tag
-Find the exact insertion point after the hero closing tag
-I need to add a backstory section and also add the CSS for it. Let me first add a style for a text-only section:
-
-
-Add backstory text-only section style
-Add backstory text-only section style
-Now insert the backstory section between the hero and the first screen section:
-
-
-Edited a file, read a file
-Edited a file, read a file
-Added a "Backstory" section between the hero and the first screen showcase. It covers:
-
-The pandemic wellness boom and seeing school friends move into functional medicine
-Discovering Dr Mark Hyman and Function Health, going deep on the podcasts and books
-Why you liked the precision-based approach — the natural path can be a bit woo woo, conventional medicine is reactive, functional medicine done well gives you both the evidence base and the root-cause lens
-The practitioner quality point — certification and years in craft matter — and how that motivated the project: making that depth accessible through tech without losing the nuance
-It sits as a full-width text block (no phone mockup) which gives it a different rhythm from the screen sections — feels more personal before you get into the product walkthrough. Want to adjust any of the wording?
-
-Index
-Code · HTML 
-dont say how i got into functional medicine - say why i believe functional medicine is the future
-
-16:16
-
-Change backstory heading
-Change backstory heading
-Done — same story, much better framing. "How I got into it" is retrospective; "why I believe it's the future" is forward-looking and positions you with conviction. Want anything else tweaked?
-
-In terms of how I built it, say that Claude was instrumental with helping me to ideate and come up with different ideas even from a perspective of which idea to to work on. On that given day. It was also really helpful in mocking up different wireframes, but me, it was very clear problem I had in mind. So it did definitely took a lot of customization and going back and forth into Figma. You know, you even this was a this was a couple of months ago, so even before Figma MCP, what I did was I just exported as an HTML, and then use the the Figma to HTML plugin, which I thought was absolutely fantastic. And then that helped me to ideate the the UI in a way that felt a little bit more personalized. I didn't want it to look like something that lovable was spit out in, like, five seconds. So that was really cool. And then I was able to sort of bring it back into Claude and back into Figma that way. And have sort of an idea of a general user flow, which was established, like, fairly early on
-
-16:19
-Great detail — that's the kind of "how I actually work with AI" transparency that makes this interesting. Let me add a process section.
-
-
-Viewed 2 files, edited a file
-Viewed 2 files, edited a file
-I see the section 01 heading got lost in the replacement. Let me fix that:
-
-
-Edited a file, read a file
-Edited a file, read a file
-Added a "Process" section between the backstory and the screen walkthrough. It covers:
-
-Claude being instrumental for ideation — not just design, but deciding which idea to pursue, exploring angles
-The user flow being established early because you had a clear problem in mind
-The back-and-forth workflow: Claude for wireframes → export as HTML → Figma-to-HTML plugin into Figma → refine the UI → bring back into Claude → iterate (this was pre-Figma MCP)
-Not wanting it to look like something Lovable spat out in five seconds
-The closing thought: AI doesn't replace the craft, it accelerates it — you still need taste and the willingness to push past the first output
-The page now flows: hero (what and why) → backstory (functional medicine conviction) → process (how Claude changed the workflow) → screen walkthroughs. Want to tweak anything?
-
-Index
-Code · HTML 
-Just say that Cronometer's UI was a huge inspiration because an app that I actually use daily to track my own macros. I really like the micronutrient features there. But what I realized is it's really powerful when you can combine that with the your actual biochemistry as well. So that that was that was the thinking behind that. But then I'm thinking, if you can get a feature now to integrate with supplements, then that actually brings the full three of your nutrition, your supplements, combined, and that correlates with your your blood work and then having that continued road map and journey so that someone's always engaging and always working towards a particular goal. Because the reality is health is actually fairly overwhelming. There's a million different things to do that will move the needle. You need to know what they are and in what order. That's that's where it gives true power to the user.
-
-16:21
-
-Viewed a file, edited a file, read a file
-Viewed a file, edited a file, read a file
-Updated section 01. It now flows: Cronometer as daily-use inspiration → the insight that nutrition data gets powerful when combined with actual biochemistry → adding supplements as the third leg → the trifecta of nutrition + supplements + blood work all correlated into one roadmap → the closing line about health being overwhelming and needing to know what to do and in what order. Want anything else?
-
-Index
-Code · HTML 
-Want you to continue without saying that I also added the habit section and also the ability to to book a session with your health coach as well, which, of course, would be at a much lower rate than let's say, an actual doctor. So then that will be a really clever way to building that accountability in terms of like, okay, here's what you know you have to do. Here's the accountability. Here's the interface that's gonna help keep you accountable. Here's a human that's gonna help keep you accountable all on demand. So I thought that was really powerful. And the the actual insights into each marker, each set of patterns, or what story that they tell. With a clear road map to show what the user needs to focus on in the right order. That that would truly give power to the user to be on a a very consistent health journey. I thought that was really powerful. In terms of the UI, I did use Tailwinds UI, but I also just made it look slightly different in terms of what I saw was out there in terms of the colors and using a serif font combined with a sans serif font as well, which I thought would give it, like, a a slightly different look without without it going crazy design wise. It's just a bit of a clean clinical look. But nice cool calm colors. This was something that I would actually build, I'd probably spend a bit more time into the design, but this was really was just do something for fun.
-
-Show more
-16:23
-
-Viewed a file, edited a file, read a file
-Viewed a file, edited a file, read a file
-Added two more paragraphs to the process section:
-
-The accountability ecosystem: habits + coach booking at a lower rate than a doctor + the interface + a real human — all on demand. Combined with marker insights, pattern recognition, and the sequenced roadmap, it gives the user genuine power over their health journey.
-The UI choices: Tailwind UI as a base but differentiated with calm colours and a serif/sans-serif pairing for that clean clinical feel. And the honest closer — if you were to build it properly you'd spend more time on the design, but this was about having fun and seeing how far you could push the concept.
-Want anything else adjusted?
-
-Index
-Code · HTML 
-title it Personalised health based on your biochemistry: the preventative approach. where it says side project...change that to IDEATION SESSION
-
-16:24
-
-Edited 2 files, read a file
-Edited 2 files, read a file
-Done — label now says "Ideation session" and the title reads "Personalised health based on your biochemistry: the preventative approach." Page <title> tag updated to match too. Anything else?
-
-Index
-Code · HTML 
-Through section. I want you to consolidate that, and I want you to use the term preventative health instead of functional medicine. I don't wanna advocate for functional medicine because the aim for this is to get a tech job. So I don't wanna marginalize health tech companies. You know? So just call it preventative health
-
-16:25
-Smart call — preventative health is the bigger, more inclusive tent. Let me do a full pass.
-
-
-Viewed a file, edited a file
-Viewed a file, edited a file
-Now let me find and replace the remaining "functional medicine" references throughout the rest of the page:
-
-
-Viewed 3 files, edited 3 files, ran a command
-Viewed 3 files, edited 3 files, ran a command
-Now let me also check the hero and check-in sections for any remaining references:
-
-
-Verify no functional medicine references remain
-Verify no functional medicine references remain
-Now let me also check for "functional" on its own to catch anything like "functional health":
-
-
-Check for any remaining functional references
-Check for any remaining functional references
-All clean. Let me also check the check-in section since it mentioned practitioners:
-
-
-Check practitioner references are fine
-Check practitioner references are fine
-Those are all fine — "practitioner" is neutral and works in any health tech context.
-
-
-Presented file
-Presented file
-Done — every instance of "functional medicine" has been replaced with "preventative health" or equivalent neutral phrasing throughout the entire page. The backstory heading is now "Why I believe preventative health is the future." Dr Mark Hyman is still mentioned as inspiration (which is fine — it's your personal story) but the framing is about preventative, evidence-based, root-cause approaches rather than advocating for a specific discipline. Keeps it health-tech friendly. Anything else?
-
-Index
-Code · HTML 
-
-1.svg
-svg
-
-maybe put this in a mobile case and have it at the top, the the right of the Ideation session
-Personalised health based on your biochemistry: the preventative approach section....
-
-16:28
-
-Viewed a file, ran a command
-Viewed a file, ran a command
-Now let me update the hero to a two-column layout with the phone mockup on the right:
-
-
-See current hero section
-See current hero section
-First, add the hero layout styles:
-
-
-Add hero grid layout styles for two-column hero with phone mockup
-Add hero grid layout styles for two-column hero with phone mockup
-Now update the responsive styles for mobile:
-
-
-Update responsive styles to handle hero grid on mobile
-Update responsive styles to handle hero grid on mobile
-Now restructure the hero HTML to wrap text in a content div and add the phone:
-
-
-Edited a file, read a file
-Edited a file, read a file
-There it is — the hero now has your SVG screen sitting inside a phone bezel on the right, alongside the title and intro copy on the left. Mirrors the reference layout from the designer's site you showed me at the start. On mobile it stacks with the phone on top.
-
-The SVG is saved as screens/hero.svg in the article folder so it deploys with everything else. Want to adjust the phone size or positioning?
-
-Index
-Code · HTML 
-put pill capsule ui under the last para of ideation session...use: health tech , critical thinking, systems  thinking, design thinking ai
-
-16:31
-
-Edited a file, read a file
-Edited a file, read a file
-Done — five pill tags sitting right under the last paragraph: Health tech, Critical thinking, Systems thinking, Design thinking, AI. Anything else?
-
-Index
-Code · HTML 
-Roadmap.png
-Insights.png
-LDL.png
-Metabolic Health.png
-I want to actually showcase these screeens in the relevant section because it really showcases the phasic appraoch to health
-
-16:38
-
-Copy new screens to article folder
-Copy new screens to article folder
-Now let me swap these into the roadmap and insights carousels. The new Roadmap screen shows the full phasic view with Phase 1 and Phase 2, and the new Insights screen shows the categorised system view — much better for the narrative.
-
-
-Update roadmap carousel to include the new full Roadmap screen alongside existing one
-Update roadmap carousel to include the new full Roadmap screen alongside existing one
-Now update the insights carousel with the new screens:
-
-
-Edited a file, read a file
-Edited a file, read a file
-Updated both carousels:
-
-Roadmap now has 2 screens — the original overview plus the new full phasic view showing Phase 1 (digestion, nutrients, daily rhythm) flowing into Phase 2 (bile support, gut repair, binders). Really drives home the sequencing point.
-
-Insights now leads with the new categorised system view (Foundations & Inflammation → Barrier Function → Immunity → Blood Sugar → Hormonal), followed by the Metabolic Health pattern detail and the individual LDL marker — then the original screens after. The drill-down from systems → patterns → individual markers tells the story you described about looking at correlations, not isolated numbers.
-
-Want anything else adjusted?
-
-Index
-Code · HTML 
-are those screens added showing the full length though?
-
-16:39
-Good catch — those new screens are taller (they show full scrollable content) so the current object-fit: cover with object-position: top will crop them. Let me check the dimensions.
-
-
-Check image dimensions to understand aspect ratios
-Check image dimensions to understand aspect ratios
-Yeah — the Roadmap, Insights and Metabolic Health screens are nearly 2x taller than the standard screens. With object-fit: cover they're getting cropped to just the top portion. The phone bezel is roughly a 1:2 ratio but these are 1:3.6+.
-
-There are two options here: I can make those carousel slides scrollable within the phone frame so you can see the full content, or I can switch to object-fit: contain for those specific screens (but that would leave gaps on the sides). Scrollable is more realistic — it mimics how you'd actually use the app.
-
-
-Add scrollable slide class and update carousel slides for tall screens
-Add scrollable slide class and update carousel slides for tall screens
-Now add the scrollable class to the tall screen slides:
-
-
-Edited 3 files, read a file
-Edited 3 files, read a file
-The tall screens (Roadmap, Insights, Metabolic Health) are now scrollable within the phone frame — you can swipe/scroll down inside the bezel to see the full content, just like you would on a real phone. The scrollbar is hidden for a clean look. The standard-ratio screens (LDL, the originals) stay as they were since they fit naturally.
-
-Want anything else tweaked?
-
-Index
-Code · HTML 
-1773866475746_image.png
-I already have an index.html in my github that is now running in vercel...how do i get this new page to be there when the user clicks on projects ?maybe when they click on projects - something drops down to say 'Health Teach Ideation'
-
-16:42
-That's a great setup. Since your site is a single HTML file with a sidebar nav, the cleanest approach is to deploy this article as a separate HTML file in your repo and link to it from the sidebar. Here's how:
-
-Your repo structure would look like:
-
-/index.html              ← your existing portfolio
-/projects/health-tech/index.html   ← the article
-/projects/health-tech/screens/     ← the screenshots
-Vercel serves this automatically — tanaamaul.com/projects/health-tech/ just works, no config needed.
-
-For the sidebar dropdown, you'd add a submenu under "Projects" in your existing index.html. I can see from the screenshot you have "Projects" as a nav item already. You'd want something like:
-
-Projects  ▾
-  └─ Health Tech Ideation
-Where clicking "Health Tech Ideation" navigates to /projects/health-tech/.
-
-Want me to do two things:
-
-Restructure the article folder to match that path (projects/health-tech/)
-Look at your actual index.html on GitHub and add the dropdown to your sidebar nav?
-If so, can you share the GitHub repo URL (or I can check if it's at the tanaamaul.com domain)? That way I can match the exact sidebar markup and styling you're already using.
-
-https://github.com/thaibajan/tanaamaul
-
-16:43
-
-Searched the web
-Searched the web
-I can see your sidebar nav structure. You have three nav items: Home, Projects, and Blog. The cleanest approach is to make "Projects" into a dropdown that reveals "Health Tech Ideation" as a sub-link pointing to /projects/health-tech/.
-
-Here's exactly what you need to do:
-
-1. Add the article folder to your repo:
-
-/projects/health-tech/index.html    ← the article file
-/projects/health-tech/screens/      ← all the screen PNGs + hero.svg
-I've already got this ready in the outputs — just rename the folder structure.
-
-2. In your existing index.html, replace the Projects nav item with a dropdown:
-
-Find this line:
-
-html
-<a class="nav-item" href="#"><svg ...>...</svg>Projects</a>
-Replace it with:
-
-html
-<div class="nav-group">
-  <a class="nav-item" href="#" onclick="toggleProjects(event)">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" /></svg>
-    Projects
-    <svg class="chevron-down" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="12" height="12" style="margin-left:auto;transition:transform 0.2s"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
-  </a>
-  <div class="nav-sub" id="projectsSub" style="display:none;padding-left:32px;">
-    <a class="nav-item" href="/projects/health-tech/" style="font-size:13px;padding:8px 12px;">Health Tech Ideation</a>
-  </div>
-</div>
-3. Add this small JS function (inside your existing <script> block):
-
-javascript
-function toggleProjects(e) {
-  e.preventDefault();
-  const sub = document.getElementById('projectsSub');
-  const chevron = e.currentTarget.querySelector('.chevron-down');
-  if (sub.style.display === 'none') {
-    sub.style.display = 'block';
-    chevron.style.transform = 'rotate(180deg)';
-  } else {
-    sub.style.display = 'none';
-    chevron.style.transform = 'rotate(0)';
-  }
-}
-Let me also restructure the output folder so it matches the path you need:
-
-
-Create the deployment-ready folder structure
-Create the deployment-ready folder structure
-Also update the "Back" link in the article to point to the root:
-
-
-Edited 2 files, read a file
-Edited 2 files, read a file
-Here's the deployment plan:
-
-Step 1 — Add the projects/ folder to your repo. Download the projects folder from the outputs and drop the entire thing into your thaibajan/tanaamaul repo root. Your repo structure becomes:
-
-index.html                          ← existing
-TM headshot.png                     ← existing
-Tanaa Maul CV.pdf                   ← existing
-projects/health-tech/index.html     ← new article
-projects/health-tech/screens/       ← new (20 images)
-Vercel will automatically serve tanaamaul.vercel.app/projects/health-tech/.
-
-Step 2 — Update your sidebar nav in the existing index.html with the dropdown code I gave above — replace the Projects <a> tag and add the toggleProjects function. When someone clicks "Projects" it expands to show "Health Tech Ideation" which links to /projects/health-tech/.
-
-Want me to create a ready-to-go version of your updated index.html with the dropdown already wired in?
-
-Index
-Code · HTML 
-walk me through step by step
-
-16:45
-Sure — here's the full walkthrough, step by step.
-
-Step 1: Download the project files from this chat
-
-Download the projects folder from the file I just shared. It contains:
-
-projects/health-tech/index.html (the article)
-projects/health-tech/screens/ (all 20 images)
-Step 2: Open your GitHub repo
-
-Go to https://github.com/thaibajan/tanaamaul
-
-Step 3: Upload the projects folder
-
-Click the "Add file" button → "Upload files"
-The tricky bit: GitHub's uploader doesn't create folders easily. The simplest way is to do this from your terminal/command line instead.
-If you have git set up locally:
-
-bash
-cd your-repo-folder
-```
-
-Then drag/copy the `projects` folder into your repo folder so it sits alongside your existing `index.html`:
-```
-tanaamaul/
-  index.html              ← already there
-  TM headshot.png         ← already there
-  Tanaa Maul CV.pdf       ← already there
-  projects/               ← new folder you're adding
-    health-tech/
-      index.html
-      screens/
-        1.png
-        2.png
-        ... (all the images)
-Then push:
-
-bash
-git add .
-git commit -m "Add health tech ideation project"
-git push
-Vercel will auto-deploy. Your article will be live at tanaamaul.vercel.app/projects/health-tech/ within a minute or two.
-
-Step 4: Add the dropdown to your sidebar
-
-Now open your main index.html in your repo. Find this line (around line 320 in the sidebar nav):
-
-html
-<a class="nav-item" href="#"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" /></svg>Projects</a>
-Replace that entire line with:
-
-html
-<div class="nav-group">
-  <a class="nav-item" href="#" onclick="toggleProjects(event)">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" /></svg>
-    Projects
-    <svg class="chevron-down" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="12" height="12" style="margin-left:auto;transition:transform 0.2s"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
-  </a>
-  <div class="nav-sub" id="projectsSub" style="display:none;padding-left:32px;">
-    <a class="nav-item" href="/projects/health-tech/" style="font-size:13px;padding:8px 12px;">Health Tech Ideation</a>
-  </div>
-</div>
-Step 5: Add the toggle function
-
-In the same index.html, find your <script> tag at the bottom (where your theme toggle and sidebar JS lives). Add this function anywhere inside it:
-
-javascript
-function toggleProjects(e) {
-  e.preventDefault();
-  const sub = document.getElementById('projectsSub');
-  const chevron = e.currentTarget.querySelector('.chevron-down');
-  if (sub.style.display === 'none') {
-    sub.style.display = 'block';
-    chevron.style.transform = 'rotate(180deg)';
-  } else {
-    sub.style.display = 'none';
-    chevron.style.transform = 'rotate(0)';
-  }
-}
-Step 6: Commit and push
-
-bash
-git add .
-git commit -m "Add projects dropdown with health tech ideation"
-git push
-Step 7: Test it
-
-Go to tanaamaul.vercel.app
-Click "Projects" in the sidebar — it should expand to show "Health Tech Ideation"
-Click "Health Tech Ideation" — it takes you to the article page
-The "Back" link in the article nav takes you back to the homepage
-That's it. Want me to create the updated index.html with the dropdown already wired in so you can just replace the whole file?
-
-give me the 20 downloads
-
-16:46
-
-Presented 21 files
-Presented 21 files
-All 21 files there (index.html + hero.svg + 15 original screens + 4 new screens). Download each one, then place them in your repo as:
-
-projects/
-  health-tech/
-    index.html
-    screens/
-      hero.svg
-      1.png through 15.png
-      Roadmap.png
-      Insights.png
-      LDL.png
-      Metabolic_Health.png
-Make sure the screens/ folder sits inside health-tech/ — the HTML references images via screens/1.png etc. so the relative paths need to match.
-
-Index
-Code · HTML 
-Hero
-Image · SVG 
-1
-Image · PNG 
-2
-Image · PNG 
-3
-Image · PNG 
-4
-Image · PNG 
-5
-Image · PNG 
-6
-Image · PNG 
-7
-Image · PNG 
-8
-Image · PNG 
-9
-Image · PNG 
-10
-Image · PNG 
-11
-Image · PNG 
-12
-Image · PNG 
-13
-Image · PNG 
-14
-Image · PNG 
-15
-Image · PNG 
-Roadmap
-Image · PNG 
-Insights
-Image · PNG 
-Ldl
-Image · PNG 
-Metabolic health
-Image · PNG 
-the hero svg is a bit off - the +12% from last week and the down 2.3kg - the colours are wrong...it should be the same as the same ui components in hrv and resting hr...
-
-16:48
-Let me look at the SVG to find those elements.
-
-
-Check the hero SVG for the badge/pill elements
-Check the hero SVG for the badge/pill elements
-The SVG is quite long. Let me search for the specific badge elements — the "+12%" and the "↓ 2.3kg" pills:
-
-
-Ran 2 commands
-Ran 2 commands
-That's a massive SVG — the text is all vector paths (exported from Figma), so I can't easily find the badge colours by text content. Let me look at the specific badge/pill elements with the teal/green fill colours:
-
-
-Find the teal-themed badge fills
-Find the teal-themed badge fills
-This SVG is entirely Figma-exported vector paths — the text and colours are baked into path data. I can't simply swap a colour because the pill badges like "+12% vs last week" and "↓ 2.3kg" are part of complex path groups where the text itself is rendered as <path> elements with specific fill colours.
-
-The most reliable fix would be to update this in Figma and re-export the SVG. But if you can tell me specifically what the current colours look like vs what they should be, I can try doing a targeted find-and-replace on the fill values.
-
-Looking at the HRV and Resting HR sections in the screenshot (screen 1.png), those small pill badges use:
-
-Background: 
-#E8F2F0 (light teal)
-Text/arrow: 
-#028090 (teal) for the up arrow + text, or 
-#114B5F (dark teal)
-The "+12% vs last week" pill (line 47) already uses 
-#E8F2F0 background and 
-#028090 text. The "↓ 2.3kg" pill (line 57) also uses 
-#E8F2F0 background and 
-#028090 text.
-
-So the colour values actually match. Could you tell me what looks wrong when you view it — is it that the arrow direction or the pill colours look different from the HRV/Resting HR ones in the actual rendered view?
-
-so it is correct in figma - you just changed it inside claude to make it different
-
-16:49
-You're right — I didn't touch the SVG at all, it's the original file you uploaded straight from Figma. The SVG itself is correct. If the colours look off when rendered in the phone bezel on the article page, it might be the dark screen background (background: #e8ede6 on the phone screen) affecting how the light teal pills appear, or a rendering issue with the SVG scaling.
-
-Let me check — the hero phone screen currently has a green-tinted background that may be clashing:
-
-
-Check how the hero SVG is being rendered
-Check how the hero SVG is being rendered
-The SVG already has its own background fill (
-#F3FAF2 — the light green app background), so the 
-#e8ede6 behind it shouldn't matter since the SVG covers the full area. The file should render exactly as it looks in Figma.
-
-If something looks different to you when you view the article, can you screenshot what you're seeing? It might be a browser scaling or rendering artefact rather than a colour issue.
-
-1773867047920_image.png
-got them
-
-16:50
-Nice — you've got all the files downloaded. Now just move them into the right folder structure in your repo:
-
-Create the folder projects/health-tech/screens/ in your repo
-Move all the PNGs + hero.svg into screens/
-Move index.html up one level into projects/health-tech/
-So your repo should look like:
-
-tanaamaul/
-  index.html                          ← your existing site
-  TM headshot.png
-  Tanaa Maul CV.pdf
-  projects/
-    health-tech/
-      index.html                      ← the article
-      screens/
-        1.png
-        2.png
-        ...
-        15.png
-        hero.svg
-        Insights.png
-        LDL.png
-        Metabolic_Health.png
-        Roadmap.png
-Then git add . && git commit -m "Add health tech ideation project" && git push and Vercel will deploy it automatically. Your article will be live at tanaamaul.vercel.app/projects/health-tech/.
-
-After that, add the sidebar dropdown to your main index.html using the code from earlier and push again. Let me know if you hit any snags.
-
-1773867076836_image.png
-16:51
-Since you don't have git set up locally, the easiest way to upload the folder structure is through GitHub's web interface. Here's how:
-
-Click "Add file" → "Upload files"
-The trick is: drag the entire projects folder from your Finder into the upload area — GitHub will preserve the folder structure automatically
-So in your Finder, you need to first organise the files like this:
-
-projects/
-  health-tech/
-    index.html
-    screens/
-      1.png, 2.png ... 15.png
-      hero.svg
-      Insights.png, LDL.png, Metabolic_Health.png, Roadmap.png
-Create those folders on your Mac, move the files in, then drag the projects folder into GitHub's upload area. It should show the paths like projects/health-tech/index.html and projects/health-tech/screens/1.png etc.
-
-Commit it, and Vercel will auto-deploy within a minute. Let me know once it's live and we'll add the sidebar dropdown next.
-
-1773867149138_image.png
-16:52
-I can see the issue — the paths show /projects/Roadmap.png, /projects/index.html, etc. The health-tech/ and screens/ subfolders are missing. The files need to be at /projects/health-tech/screens/1.png, not /projects/1.png.
-
-Don't commit this yet. Click the × on all the files to remove them, then restructure your local folders first:
-
-On your Mac, create this folder structure:
-projects/
-  health-tech/
-    screens/
-Put index.html inside health-tech/
-Put all the PNGs + hero.svg inside health-tech/screens/
-Then drag the projects folder into GitHub's upload area again
-The paths should then show:
-
-/projects/health-tech/index.html
-/projects/health-tech/screens/1.png
-/projects/health-tech/screens/hero.svg
-...etc
-Once you see those correct paths, commit it.
-
-1773867264759_image.png
-16:54
-Almost — but the index.html is inside screens/ when it should be one level up. I can see /projects/health-tech/screens/index.html — it needs to be /projects/health-tech/index.html.
-
-Remove the index.html from the screens folder on your Mac, put it directly in health-tech/, then re-drag. Your local folders should be:
-
-projects/
-  health-tech/
-    index.html          ← here, NOT inside screens
-    screens/
-      1.png
-      2.png
-      ...
-      hero.svg
-      Roadmap.png
-      etc
-Then drag projects into GitHub again. The index.html path should show as /projects/health-tech/index.html — not /projects/health-tech/screens/index.html.
-
-1773867334819_image.png
-16:55
-That's perfect. index.html at /projects/health-tech/index.html and all the images at /projects/health-tech/screens/. Go ahead and commit it — Vercel will pick it up and your article will be live at tanaamaul.vercel.app/projects/health-tech/ within a minute or two.
-
-commit to am in branch ?
-
-16:55
-Yes, commit to main. That's your only branch and it's what Vercel deploys from.
-
-1773867376978_image.png
-16:56
-It's in. You can see projects/health-tech folder right there. Give Vercel about a minute to deploy, then check tanaamaul.vercel.app/projects/health-tech/ — your article should be live.
-
-1773867412238_image.png
-16:56
-It's deployed and ready. Status shows Ready with 0% error rate. Go to tanaamaul.vercel.app/projects/health-tech/ and your article should be live right now.
-
-its there yes
-
-16:58
-Brilliant — you've got a live article page on your portfolio. To recap what we built:
-
-A dedicated article at /projects/health-tech/ with your 15+ app screens in phone mockup carousels
-Personal narrative about preventative health, Claude as a build tool, and your domain expertise
-Alternating left/right layout with the phone bezel inspo you showed me at the start
-Hero section with the SVG screen, pill tags, and meta bar
-Backstory + process sections before the screen walkthrough
-Dark/light mode, responsive, touch-swipeable carousels
-Whenever you're ready, the next step is adding the Projects dropdown to your main site's sidebar so visitors can navigate to it. Just let me know.
-
-how do i get the drop dopwn ?
-
-16:58
-You need to edit your main index.html on GitHub. Here's how:
-
-Go to your repo: github.com/thaibajan/tanaamaul
-Click on index.html
-Click the pencil icon (edit) in the top right
-Then make these two changes:
-
-Change 1 — Find this line (in the sidebar nav section):
-
-html
-<a class="nav-item" href="#"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" /></svg>Projects</a>
-Replace it with:
-
-html
-<div class="nav-group"><a class="nav-item" href="#" onclick="toggleProjects(event)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" /></svg>Projects<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="12" height="12" style="margin-left:auto;transition:transform 0.2s"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></a><div id="projectsSub" style="display:none;padding-left:32px;"><a class="nav-item" href="/projects/health-tech/" style="font-size:13px;padding:8px 12px;">Health Tech Ideation</a></div></div>
-Change 2 — Find the closing </script> tag at the bottom of the file, and add this just before it:
-
-javascript
-function toggleProjects(e) {
-  e.preventDefault();
-  var sub = document.getElementById('projectsSub');
-  var chevron = e.currentTarget.querySelector('svg:last-child');
-  if (sub.style.display === 'none') {
-    sub.style.display = 'block';
-    chevron.style.transform = 'rotate(180deg)';
-  } else {
-    sub.style.display = 'none';
-    chevron.style.transform = 'rotate(0)';
-  }
-}
-Then commit to main. The sidebar will now have a "Projects" item that expands to show "Health Tech Ideation" linking to your article.
-
-
-<!DOCTYPE html> <html lang="en" data-theme="light"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Tanaa Maul</title> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" cross
-
-pasted
-
-17:01
-That looks correct — the dropdown code and the toggleProjects function are both in there. Commit this to main and the Projects dropdown will work on your site. Click "Projects" in the sidebar and it'll expand to show "Health Tech Ideation" linking to your article.
-
-couple things...the ui looks pretty bad on the screens. can you remove all screens and I'll just maybe add a video or something from my phone
-
-17:04
-
-Check the current article HTML to identify all phone/carousel sections to remove
-Check the current article HTML to identify all phone/carousel sections to remove
-Let me rebuild the article as a clean text-only page — no phone mockups, no carousels, no screens. Just the written content with your hero SVG.
-
-
-Ran a command, created a file, read a file
-Ran a command, created a file, read a file
-Done — completely clean. All phone mockups, carousels, and screen references removed. It's now a pure editorial article page with just the written content, pill tags, meta bar, and scroll-reveal animations. No images, no screens/ folder dependency.
-
-Download this index.html and replace the one on GitHub (edit the file directly in the repo, select all, paste, commit). You can also delete the screens/ folder from GitHub if you want to keep the repo tidy.
-
-When you're ready to add a video walkthrough later, you can embed it with a simple <video> tag or a Loom/YouTube embed wherever you want in the page.
-
-Index
-Code · HTML 
-also if you can keep the meaning of the writing but make it more concise. the process section could be 2x shorter for example...also replace all of these '—' with '-'
-
-17:07
-
-Ran a command, created a file, read a file
-Ran a command, created a file, read a file
-Done. All — replaced with -, and the copy is tightened up across the board. The process section went from 5 paragraphs to 2. Every other section trimmed by roughly a third - same meaning, less waffle.
-
-To update: go to your repo on GitHub, navigate to projects/health-tech/index.html, click the pencil to edit, select all, paste the new content, commit to main.
-
-Index
-Code · HTML 
-ive updated the hero wireframe...so you can put it back now. hopefully it looks better...i want it in the same location it was before...but the inly issue is - last time when the screen was smaller it went above the heafer text rather than below it
-
-17:44
-
-Check the current hero section
-Check the current hero section
-Now I need to add the two-column hero grid with the phone mockup, but this time on mobile the phone goes below the text instead of above. Let me add the styles and restructure the hero:
-
-
-Add hero grid styles with phone below text on mobile
-Add hero grid styles with phone below text on mobile
-Now update the mobile breakpoint so the phone goes below (not above) the text:
-
-
-Update mobile styles - phone below text, not above
-Update mobile styles - phone below text, not above
-Now restructure the hero HTML to wrap content and add the phone:
-
-
-Edited a file, read a file
-Edited a file, read a file
-Done. The phone mockup is back in the hero, right side on desktop. On mobile, the text stays on top (order: 1) and the phone drops below it (order: 2) - fixing the issue where it was jumping above the header before.
-
-It still references screens/hero.svg so make sure that file is still in your repo's screens/ folder. Upload the updated index.html to GitHub the same way - edit, select all, paste, commit.
-
-Index
-Code · HTML 
-so what do i do now ?
-
-17:49
-Go to GitHub and edit the article page:
-
-Go to github.com/thaibajan/tanaamaul
-Navigate to projects/health-tech/index.html
-Click the pencil icon to edit
-Select all the content (Cmd+A) and delete it
-Paste the new content from the file I just gave you
-Commit to main
-That updates the article with the concise copy, no screen carousels, and the phone mockup back in the hero (with the mobile fix).
-
-If you've also updated the hero SVG in Figma, you'll need to re-upload the new hero.svg to the screens/ folder too. You can do that by navigating to projects/health-tech/screens/ in your repo, clicking "Add file" > "Upload files", and dragging the new hero.svg in.
-
-what you mean you updated it? Cant i just upload the png straigth from figma?
-
-17:50
-Yes, absolutely - just export it as a PNG from Figma and upload it. I'll just need to change the reference in the HTML from hero.svg to hero.png. Let me update that:
-
-
-Edited a file, read a file
-Edited a file, read a file
-So now:
-
-Export your updated screen from Figma as a PNG called hero.png
-Upload hero.png to projects/health-tech/screens/ on GitHub
-Edit projects/health-tech/index.html on GitHub - select all, paste the new content, commit
-Index
-Code · HTML 
-1773870770213_image.png
-17:52
-Wait - the path shows hero.png going into the root of the repo. It needs to be inside projects/health-tech/screens/.
-
-Don't commit this. Click Cancel, then:
-
-Navigate to projects/health-tech/screens/ in your repo first
-Then click "Add file" > "Upload files" from there
-Drag hero.png in
-That way it uploads to the correct path: projects/health-tech/screens/hero.png.
-
-1773870875552_image.png
-heres my issue with it...the screen text looks so small... i will screenshot the figma so you have an idea...
-
-17:54
-Yeah I can see that - the phone mockup is quite small which makes the screen content tiny and hard to read. The phone bezel is only 240px wide right now.
-
-A few options to fix this:
-
-Make the phone bigger - increase it to 300-320px wide so the screen content is readable
-Ditch the phone frame entirely - just show the screenshot as a floating card with rounded corners and a subtle shadow, no bezel. Takes up more space, content is bigger
-Show just the top portion of the screen - crop it as a larger image without the phone frame
-What feels right to you? Or share the Figma screenshot and I can see what we're working with.
-
-1773870902807_image.png
-17:55
-That screen looks great at full size. The problem is just the phone bezel shrinking it down. Let me ditch the phone frame and show it as a floating card instead - rounded corners, subtle shadow, no bezel eating up space. It'll be much more readable and still look polished.
-
-
-Replace phone mockup styles with floating card style
-Replace phone mockup styles with floating card style
-Now update the HTML to use the simpler card markup:
-
-
-Edited a file, read a file
-Edited a file, read a file
-Updated. The screen now shows as a 280px wide floating card with rounded corners and a soft shadow - no phone bezel shrinking everything down. The actual screen content will be much more readable now.
-
-Same steps: edit projects/health-tech/index.html on GitHub, select all, paste, commit. Make sure hero.png is uploaded to the screens/ folder too.
-
-Index
-Code · HTML 
-hero2.png
-hero.png
-id like to have these 2 next to each other. updated
-
-18:04
-Nice - two screens side by side will look much better. Let me update the hero to show both.
-
-
-Update hero phone area for two screens side by side
-Update hero phone area for two screens side by side
-Now widen the hero grid to fit both screens:
-
-
-Widen hero grid for two screens
-Widen hero grid for two screens
-Now update the HTML to show both screens:
-
-
-Add both screens to hero
-Add both screens to hero
-Now update mobile so both screens stack nicely below the text:
-
-
-Update mobile for two screens
-Update mobile for two screens
-Now copy the uploaded images to outputs:
-
-
-Ran a command, read a file
-Ran a command, read a file
-Here's what you need to upload to GitHub:
-
-hero.png and hero2.png go into projects/health-tech/screens/
-index.html - edit projects/health-tech/index.html, select all, paste, commit
-The two screens sit side by side with rounded corners, a soft shadow, and a slight vertical offset on the second one so they don't look too rigid. On mobile they stay side by side but shrink down, and sit below the text.
-
-Index
-Code · HTML 
-Hero
-Image · PNG 
-Hero2
-Image · PNG 
-1773871567921_image.png
-18:06
-That's the right path - tanaamaul / projects / health-tech / screens. Commit it, then go edit the index.html with the new code and you're done.
-
-1773871773705_image.png
-this is cool. how come this page doesnt have the same menu as the home page ?
-
-18:09
-Because this is a standalone HTML page with its own simple nav bar - it doesn't share any code with your main index.html and its sidebar.
-
-Two options:
-
-Keep it as is - the "Back" link takes people to the homepage where the sidebar lives. This is how most portfolio project pages work - clean, focused, no sidebar distraction.
-Add the same sidebar - I'd need to copy the entire sidebar code from your main site into this page. It works but means maintaining the same sidebar in two files, and any changes you make to one you'd need to make to the other.
-I'd recommend option 1 honestly - the clean nav keeps the focus on the article content, and the back link gets people home. What do you think?
-
-option 1
-
-18:10
-All good then - it's done. The page is live with the clean nav, two screens side by side, and the concise copy. Nice work on this one, Tanaa.
-
-side note: is there a way I can just dump all the ui screens and it create a clickable prototype? I remembr a while back claude had done an output like that before
-
-18:13
-Yeah absolutely - you can upload all your screens and I can build an interactive clickable prototype as an HTML artifact. Basically a fake phone UI where you tap hotspots to navigate between screens, with transitions and everything.
-
-Upload your screens whenever you're ready and let me know the basic flow - which screen is the starting point and roughly what links to what. Or if you want I can infer the flow from the screen content (tab bar, back buttons etc).
-
-wrtie me a prompt so i can create that clickable mprototype in anotehr chat - so as not to give this one such a beast
-
-18:16
-Here's a prompt you can paste into a new chat:
-
-I want to create a clickable mobile app prototype from my Figma screen exports. I'll upload all the screens as PNGs.
-
-Build me a single HTML file that:
-
-Shows screens inside a phone frame/bezel
-Has clickable hotspots that navigate between screens (use the tab bar icons and any back buttons/CTAs visible in the screens)
-Includes smooth slide transitions between screens
-The tab bar at the bottom should be persistent and tappable across all screens
-For screens that are taller than the phone viewport, make them scrollable inside the frame
-The app has 5 main tabs visible in the tab bar: Home, Check-in, Habits, Roadmap, Insights. Some screens are sub-screens (e.g. individual biomarker detail) that should be navigable via back buttons.
-
-I'll tell you which screens map to which tabs and what the navigation flow is after I upload them. Infer what you can from the screen content - the tab bars, back buttons, and CTAs are all visible in the PNGs.
-
-Make it feel like a real working prototype someone could tap through on their phone or present in a meeting.
-
-Then just upload your screens and tell it the rough flow. It should build you a nice interactive prototype.
-
-Ive got 2 change requests... first I have updated the entire text of the article. 2ndly - I have the html prototype...I want to create a section at the end that just explains the process is just to ideate quickly and bring a concept into something tangible. I believe the best way to be good at AI is to 'do' rather than consume course after course. I enjoy bringing concepts to life and with this amazing tech it's also the perfect way to ________. then add the html prototype next to it. confirmt he text of the last section with me before commititing
-
-19:10
-Got it. Two things:
-
-Share your updated article text and I'll replace it
-For the closing section, here's a draft - let me know how you want to fill in the blank and if the tone is right:
-The point
-
-The process here was just to ideate quickly and bring a concept into something tangible. I believe the best way to get good at AI is to do - not consume course after course. I enjoy bringing concepts to life, and with this tech it's also the perfect way to ________.
-
-What would you want that last line to say? Some ideas based on what you've told me:
-
-"...sharpen your product thinking"
-"...validate whether an idea has legs"
-"...demonstrate how you think about problems"
-"...build a portfolio that shows initiative, not just experience"
-What fits your vibe? And go ahead and share the updated article text + the prototype HTML whenever you're ready.
-
-The process here was just to ideate quickly and bring a concept into something tangible. I believe the best way to get good at AI is to do - not consume course after course. I enjoy bringing concepts to life, and with this tech it's also the perfect way to ..sharpen your systems based and critical thinking - both invaluable skills for the future. then add a line about how they can click on this html prototype to see the full ui - another thing that's so much faster in claude!
-
-19:12
-Here's the closing section copy:
-
-Why I build things
-
-The process here was just to ideate quickly and bring a concept into something tangible. I believe the best way to get good at AI is to do - not consume course after course. I enjoy bringing concepts to life, and with this tech it's also the perfect way to sharpen your systems-based and critical thinking - both invaluable skills for the future.
-
-Click through the interactive prototype below to see the full UI in action - another thing that's so much faster in Claude.
-
-Happy with that? If so, share the updated article text and the prototype HTML file and I'll put it all together.
-
-yes
-
-19:12
-Go ahead and share:
-
-Your updated article text
-The prototype HTML file
-And I'll build the final version.
-
-
-# Case Study # **Personalised health based on your biochemistry: the preventative approach** I'm deep into health and wellbeing. Over the last few years I've worked closely with health coaches and functional medicine practitioners, and I noticed a pattern in the health industry: someone gets blood
-
-pasted
-
-heres the new copy:
-
-19:14
-Got it. Now share the prototype HTML file and I'll build the final version with the updated copy, the closing section, and the embedded prototype.
-
-
-wellside_prototype.html
-html
-
-19:19
-
-Ran 2 commands
-Ran 2 commands
-That prototype is 860KB - too large to embed inline. I'll host it as a separate file and link to it with an iframe or a "Launch prototype" button. Let me build the final article now.
-
-
-Ran 2 commands, created a file, read a file
-Ran 2 commands, created a file, read a file
-Here are the two files to upload:
-
-index.html - replace the existing one at projects/health-tech/index.html on GitHub (edit, select all, paste, commit)
-prototype.html - upload to projects/health-tech/ on GitHub (same level as index.html, not inside screens)
-The closing section has your "Why I build things" text on the left with an embedded interactive prototype iframe on the right, plus an "Open prototype in new tab" link for mobile or fullscreen viewing.
-
-Index
-Code · HTML 
-Prototype
-Code · HTML 
-1773876209178_image.png
-19:23
-Wait - you need to upload both files. Drag prototype.html in there too before committing. You should see both index.html and prototype.html in the list.
-
-1773876235434_image.png
-19:23
-Both files at projects/health-tech/. Commit it.
-
-1773876321798_image.png
-reduce the size by 30%. also it has this annoying curved thing in the corners...make it flat
-
-19:25
-
-Viewed a file, edited a file
-Viewed a file, edited a file
-Also update the mobile size:
-
-
-Edited a file, read a file
-Edited a file, read a file
-Done - 30% smaller and flat corners. Edit projects/health-tech/index.html on GitHub, select all, paste, commit. The prototype file doesn't need updating.
-
-Index
-Code · HTML 
-
-
-
-
-
-Claude is AI and can make mistakes. Please double-check responses.
-Index · HTML
-Copy
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1272,7 +20,7 @@ Copy
       --font: 'DM Sans', system-ui, -apple-system, sans-serif;
       --max-w: 860px;
     }
- 
+
     @media (prefers-color-scheme: dark) {
       :root {
         --bg: #09090b;
@@ -1286,10 +34,10 @@ Copy
         --accent-light: #9ec1a3;
       }
     }
- 
+
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
- 
+
     body {
       font-family: var(--font);
       background: var(--bg);
@@ -1297,7 +45,7 @@ Copy
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
- 
+
     .nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -1324,7 +72,7 @@ Copy
       text-decoration: none; transition: color 0.2s;
     }
     .nav-back:hover { color: var(--text-secondary); }
- 
+
     .hero {
       padding: 140px 32px 80px;
       max-width: 1080px;
@@ -1381,7 +129,7 @@ Copy
       max-width: 620px; font-weight: 300;
     }
     .hero-desc p + p { margin-top: 14px; }
- 
+
     .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
     .tag {
       font-size: 11px; font-weight: 500;
@@ -1389,7 +137,7 @@ Copy
       border-radius: 100px; border: 1px solid var(--border);
       color: var(--text-secondary); background: var(--bg);
     }
- 
+
     .hero-meta {
       display: flex; gap: 32px; margin-top: 40px;
       padding-top: 32px; border-top: 1px solid var(--border);
@@ -1401,7 +149,7 @@ Copy
       letter-spacing: 0.08em; color: var(--text-tertiary);
     }
     .meta-value { font-size: 14px; font-weight: 500; color: var(--text-primary); }
- 
+
     .prose-section {
       max-width: var(--max-w);
       margin: 0 auto; padding: 64px 32px;
@@ -1423,10 +171,10 @@ Copy
       color: var(--text-secondary); font-weight: 300;
     }
     .section-body p + p { margin-top: 14px; }
- 
+
     .section-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
     .section-tags .tag { font-size: 11px; }
- 
+
     /* Prototype section */
     .prototype-section {
       max-width: 1080px;
@@ -1463,7 +211,7 @@ Copy
     }
     .prototype-link:hover { opacity: 0.7; }
     .prototype-link svg { width: 16px; height: 16px; }
- 
+
     .footer {
       max-width: var(--max-w); margin: 0 auto;
       padding: 48px 32px; border-top: 1px solid var(--border);
@@ -1476,7 +224,7 @@ Copy
       text-decoration: none; transition: color 0.2s;
     }
     .footer-link:hover { color: var(--text-primary); }
- 
+
     @media (max-width: 768px) {
       .hero {
         padding: 120px 20px 60px;
@@ -1501,7 +249,7 @@ Copy
         height: 616px;
       }
     }
- 
+
     @media (prefers-reduced-motion: no-preference) {
       .fade-up {
         opacity: 0; transform: translateY(24px);
@@ -1512,12 +260,12 @@ Copy
   </style>
 </head>
 <body>
- 
+
   <nav class="nav">
     <a href="/" class="nav-logo">Tanaa Maul</a>
     <a href="/" class="nav-back">&larr; Back</a>
   </nav>
- 
+
   <header class="hero">
     <div class="hero-content">
       <div class="hero-label">Ideation session</div>
@@ -1569,7 +317,7 @@ Copy
       </div>
     </div>
   </header>
- 
+
   <div class="prose-section fade-up">
     <div class="prose-inner">
       <div class="section-num">Backstory</div>
@@ -1590,7 +338,7 @@ Copy
       </div>
     </div>
   </div>
- 
+
   <div class="prose-section fade-up">
     <div class="prose-inner">
       <div class="section-num">Process</div>
@@ -1609,7 +357,7 @@ Copy
       </div>
     </div>
   </div>
- 
+
   <div class="prose-section fade-up">
     <div class="prose-inner">
       <div class="section-num">01</div>
@@ -1632,7 +380,7 @@ Copy
       </div>
     </div>
   </div>
- 
+
   <div class="prose-section fade-up">
     <div class="prose-inner">
       <div class="section-num">02</div>
@@ -1655,7 +403,7 @@ Copy
       </div>
     </div>
   </div>
- 
+
   <div class="prose-section fade-up">
     <div class="prose-inner">
       <div class="section-num">03</div>
@@ -1674,7 +422,7 @@ Copy
       </div>
     </div>
   </div>
- 
+
   <div class="prose-section fade-up">
     <div class="prose-inner">
       <div class="section-num">04</div>
@@ -1698,7 +446,7 @@ Copy
       </div>
     </div>
   </div>
- 
+
   <div class="prose-section fade-up">
     <div class="prose-inner">
       <div class="section-num">05</div>
@@ -1720,7 +468,7 @@ Copy
       </div>
     </div>
   </div>
- 
+
   <div class="prototype-section fade-up">
     <div class="prototype-grid">
       <div class="prototype-text">
@@ -1745,12 +493,12 @@ Copy
       </div>
     </div>
   </div>
- 
+
   <footer class="footer">
     <span class="footer-text">&copy; 2026 Tanaa Maul</span>
     <a href="/" class="footer-link">tanaamaul.com</a>
   </footer>
- 
+
   <script>
     if ('IntersectionObserver' in window) {
       const obs = new IntersectionObserver(entries => {
@@ -1763,10 +511,3 @@ Copy
   </script>
 </body>
 </html>
- 
-
-
-
-
-
-
