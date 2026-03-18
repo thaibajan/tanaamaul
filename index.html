@@ -41,10 +41,19 @@
 
 body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-primary); display: flex; min-height: 100vh; transition: background 0.3s, color 0.3s; }
 
-.sidebar { width: 210px; min-height: 100vh; background: var(--bg-sidebar); border-right: 1px solid var(--border); padding: 24px 16px; display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; z-index: 10; transition: background 0.3s, border-color 0.3s; }
+.sidebar { width: 210px; min-height: 100vh; background: var(--bg-sidebar); border-right: 1px solid var(--border); padding: 24px 16px; display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; z-index: 10; transition: width 0.3s ease, padding 0.3s ease, background 0.3s, border-color 0.3s; overflow: hidden; }
+.sidebar.collapsed { width: 0; padding-left: 0; padding-right: 0; border-right-color: transparent; }
+.sidebar.collapsed .sidebar-inner { opacity: 0; pointer-events: none; }
+.sidebar-inner { display: flex; flex-direction: column; min-width: 178px; height: 100%; opacity: 1; transition: opacity 0.2s ease; }
 .sidebar-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-.sidebar-header span { font-weight: 500; font-size: 16px; color: var(--text-primary); }
-.sidebar-header svg { width: 16px; height: 16px; color: var(--text-muted); }
+.sidebar-header span { font-weight: 500; font-size: 16px; color: var(--text-primary); white-space: nowrap; }
+.sidebar-chevron { width: 16px; height: 16px; color: var(--text-muted); cursor: pointer; transition: transform 0.3s ease, color 0.2s; flex-shrink: 0; }
+.sidebar-chevron:hover { color: var(--text-primary); }
+.sidebar-open-btn { position: fixed; top: 28px; left: 16px; z-index: 11; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+.sidebar-open-btn.visible { opacity: 1; pointer-events: auto; }
+.sidebar-open-btn svg { width: 14px; height: 14px; color: var(--text-muted); }
+.sidebar-open-btn:hover { box-shadow: var(--shadow-sm); }
+.sidebar-open-btn:hover svg { color: var(--text-primary); }
 
 .theme-toggle { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; padding: 0 4px; }
 .theme-toggle svg { width: 14px; height: 14px; color: var(--text-muted); flex-shrink: 0; transition: color 0.2s; }
@@ -71,7 +80,8 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 .sidebar-about-link .avatar { width: 24px; height: 24px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
 .sidebar-about-link .avatar img { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; }
 
-.main { margin-left: 210px; flex: 1; padding: 64px 48px; display: flex; flex-direction: row; gap: 48px; }
+.main { margin-left: 210px; flex: 1; padding: 64px 48px; display: flex; flex-direction: row; gap: 48px; transition: margin-left 0.3s ease; }
+.main.expanded { margin-left: 0; }
 .left-col { width: 380px; flex-shrink: 0; display: flex; flex-direction: column; }
 .greeting { font-weight: 400; font-size: 20px; color: var(--text-secondary); line-height: 30px; margin-bottom: 8px; animation: fadeUp 0.5s ease both; }
 .headline { font-weight: 900; font-size: 64px; color: var(--text-primary); line-height: 70.4px; letter-spacing: -2px; margin-bottom: 8px; animation: fadeUp 0.5s ease 0.1s both; }
@@ -117,10 +127,11 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 </head>
 <body>
 
-<aside class="sidebar">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-inner">
   <div class="sidebar-header">
     <span>Tanaa Maul</span>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+    <svg class="sidebar-chevron" id="sidebarChevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
   </div>
 
   <div class="theme-toggle">
@@ -149,9 +160,14 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
     <div class="avatar"><img src="TM%20headshot.png" alt="Tanaa Maul"></div>
     About me
   </a>
+  </div>
 </aside>
 
-<main class="main">
+<button class="sidebar-open-btn" id="sidebarOpenBtn">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+</button>
+
+<main class="main" id="mainContent">
   <div class="left-col">
     <p class="greeting">Hello, I'm Tanaa</p>
     <h1 class="headline">Senior SDR / Tech Sales Professional</h1>
@@ -192,6 +208,25 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 </main>
 
 <script>
+// Sidebar toggle
+const sidebar = document.getElementById('sidebar');
+const chevron = document.getElementById('sidebarChevron');
+const openBtn = document.getElementById('sidebarOpenBtn');
+const mainContent = document.getElementById('mainContent');
+
+chevron.addEventListener('click', () => {
+  sidebar.classList.add('collapsed');
+  mainContent.classList.add('expanded');
+  openBtn.classList.add('visible');
+});
+
+openBtn.addEventListener('click', () => {
+  sidebar.classList.remove('collapsed');
+  mainContent.classList.remove('expanded');
+  openBtn.classList.remove('visible');
+});
+
+// Theme toggle
 const toggle = document.getElementById('themeToggle');
 const html = document.documentElement;
 const sunIcon = document.getElementById('sunIcon');
