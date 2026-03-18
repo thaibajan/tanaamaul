@@ -75,8 +75,47 @@
 
     .hero {
       padding: 140px 32px 80px;
-      max-width: var(--max-w);
+      max-width: 1080px;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-content {}
+    .hero-phone {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .phone {
+      width: 240px;
+      height: 490px;
+      background: #111;
+      border-radius: 36px;
+      padding: 10px;
+      position: relative;
+      flex-shrink: 0;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.06),
+        0 20px 60px rgba(0,0,0,0.22),
+        0 4px 16px rgba(0,0,0,0.1);
+    }
+    .phone-notch {
+      position: absolute; top: 10px; left: 50%;
+      transform: translateX(-50%);
+      width: 80px; height: 22px; background: #111;
+      border-radius: 0 0 14px 14px; z-index: 10;
+    }
+    .phone-screen {
+      width: 100%; height: 100%;
+      border-radius: 26px; overflow: hidden;
+      background: #e8ede6;
+    }
+    .phone-screen img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top;
+      display: block;
     }
     .hero-label {
       font-size: 11px; font-weight: 500;
@@ -161,7 +200,13 @@
     .footer-link:hover { color: var(--text-primary); }
 
     @media (max-width: 768px) {
-      .hero { padding: 120px 20px 60px; }
+      .hero {
+        padding: 120px 20px 60px;
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .hero-phone { order: 2; }
+      .hero-content { order: 1; }
       .prose-section { padding: 48px 20px; }
       .hero-meta { gap: 20px; }
       .nav { padding: 14px 20px; }
@@ -184,43 +229,53 @@
   </nav>
 
   <header class="hero">
-    <div class="hero-label">Ideation session</div>
-    <h1 class="hero-title">Personalised health based on your biochemistry: the preventative approach</h1>
-    <div class="hero-desc">
-      <p>I'm deep into health and wellbeing. Over the last few years I've worked closely 
-      with health coaches and practitioners, and I've seen the same pattern over and over: 
-      someone gets blood work done, receives a PDF of 100+ biomarkers, and has no idea 
-      what to do with any of it.</p>
-      <p>I've been deep-diving into Claude and realised it 10x's the entire UX and product 
-      development lifecycle. So I used real use cases from what I've observed - typical 
-      client lifecycles, how check-ins happen, where the gaps are - and mocked up a concept.</p>
-      <p>The objective was simple: use AI to enhance the customer journey, not create distance 
-      between customer and practitioner to boost margins while the experience suffers. 
-      Preventative medicine is the future, and there's so much scope to get this right.</p>
+    <div class="hero-content">
+      <div class="hero-label">Ideation session</div>
+      <h1 class="hero-title">Personalised health based on your biochemistry: the preventative approach</h1>
+      <div class="hero-desc">
+        <p>I'm deep into health and wellbeing. Over the last few years I've worked closely 
+        with health coaches and practitioners, and I've seen the same pattern over and over: 
+        someone gets blood work done, receives a PDF of 100+ biomarkers, and has no idea 
+        what to do with any of it.</p>
+        <p>I've been deep-diving into Claude and realised it 10x's the entire UX and product 
+        development lifecycle. So I used real use cases from what I've observed - typical 
+        client lifecycles, how check-ins happen, where the gaps are - and mocked up a concept.</p>
+        <p>The objective was simple: use AI to enhance the customer journey, not create distance 
+        between customer and practitioner to boost margins while the experience suffers. 
+        Preventative medicine is the future, and there's so much scope to get this right.</p>
+      </div>
+      <div class="tag-row">
+        <span class="tag">Health tech</span>
+        <span class="tag">Critical thinking</span>
+        <span class="tag">Systems thinking</span>
+        <span class="tag">Design thinking</span>
+        <span class="tag">AI</span>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-item">
+          <span class="meta-label">What</span>
+          <span class="meta-value">Concept &amp; mockups</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Tools</span>
+          <span class="meta-value">Claude, Figma</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Time</span>
+          <span class="meta-value">Weekend project</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Status</span>
+          <span class="meta-value">Concept</span>
+        </div>
+      </div>
     </div>
-    <div class="tag-row">
-      <span class="tag">Health tech</span>
-      <span class="tag">Critical thinking</span>
-      <span class="tag">Systems thinking</span>
-      <span class="tag">Design thinking</span>
-      <span class="tag">AI</span>
-    </div>
-    <div class="hero-meta">
-      <div class="meta-item">
-        <span class="meta-label">What</span>
-        <span class="meta-value">Concept &amp; mockups</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Tools</span>
-        <span class="meta-value">Claude, Figma</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Time</span>
-        <span class="meta-value">Weekend project</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Status</span>
-        <span class="meta-value">Concept</span>
+    <div class="hero-phone">
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="screens/hero.svg" alt="App preview">
+        </div>
       </div>
     </div>
   </header>
