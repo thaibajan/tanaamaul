@@ -78,7 +78,7 @@
       max-width: 1080px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 300px;
+      grid-template-columns: 1fr 420px;
       gap: 48px;
       align-items: center;
     }
@@ -87,15 +87,19 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
+      gap: 16px;
     }
     .hero-screen {
-      width: 280px;
-      border-radius: 24px;
+      width: 200px;
+      border-radius: 20px;
       overflow: hidden;
       box-shadow:
         0 20px 60px rgba(0,0,0,0.15),
         0 4px 16px rgba(0,0,0,0.08);
       flex-shrink: 0;
+    }
+    .hero-screen:last-child {
+      margin-top: 40px;
     }
     .hero-screen img {
       width: 100%;
@@ -192,6 +196,8 @@
       }
       .hero-phone { order: 2; }
       .hero-content { order: 1; }
+      .hero-screen { width: 160px; }
+      .hero-screen:last-child { margin-top: 24px; }
       .prose-section { padding: 48px 20px; }
       .hero-meta { gap: 20px; }
       .nav { padding: 14px 20px; }
@@ -257,7 +263,10 @@
     </div>
     <div class="hero-phone">
       <div class="hero-screen">
-        <img src="screens/hero.png" alt="App preview">
+        <img src="screens/hero.png" alt="Home screen">
+      </div>
+      <div class="hero-screen">
+        <img src="screens/hero2.png" alt="Habits screen">
       </div>
     </div>
   </header>
