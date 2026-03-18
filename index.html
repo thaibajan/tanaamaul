@@ -67,10 +67,9 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 .nav-item.active::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: -4px; }
 .nav-item svg { width: 16px; height: 16px; flex-shrink: 0; }
 
-.sidebar-about { display: flex; align-items: center; gap: 10px; padding: 12px 0; margin-top: auto; }
-.sidebar-about .avatar { width: 36px; height: 36px; border-radius: 50%; overflow: hidden; }
-.sidebar-about .avatar img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
-.sidebar-about span { font-weight: 500; font-size: 14px; color: var(--text-secondary); }
+.sidebar-about-link { margin-top: auto; }
+.sidebar-about-link .avatar { width: 24px; height: 24px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+.sidebar-about-link .avatar img { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; }
 
 .main { margin-left: 210px; flex: 1; padding: 64px 48px; display: flex; flex-direction: row; gap: 48px; }
 .left-col { width: 380px; flex-shrink: 0; display: flex; flex-direction: column; }
@@ -146,10 +145,10 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
     <a class="nav-item" href="#"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>Blog</a>
   </nav>
 
-  <div class="sidebar-about">
+  <a class="nav-item sidebar-about-link" href="#">
     <div class="avatar"><img src="TM%20headshot.png" alt="Tanaa Maul"></div>
-    <span>About me</span>
-  </div>
+    About me
+  </a>
 </aside>
 
 <main class="main">
