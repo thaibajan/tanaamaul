@@ -249,7 +249,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
         Download CV
       </a>
-      <a class="btn-main btn-secondary" href="mailto:tanaa.maul@gmail.com">
+      <a class="btn-main btn-secondary" href="/cdn-cgi/l/email-protection#5f2b3e313e3e71323e2a331f38323e3633713c3032">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
         Get in touch
       </a>
@@ -279,7 +279,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
   </div>
 </main>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Elements
 const sidebar = document.getElementById('sidebar');
 const chevron = document.getElementById('sidebarChevron');
@@ -370,8 +370,8 @@ function buildChart() {
   radarChart = new Chart(ctx, {
     type: 'radar',
     data: {
-      labels: ['Outbound Prospecting','Discovery/Qualification','Pipeline Management','Objection Handling','CRM/Sales Tooling','Technical Depth','AI Operations','BI/Analytics','Product Thinking','Stakeholder Management','Presentation'],
-      datasets: [{ data: [9,8,7,7,8,9,9,8,8,7,8], backgroundColor: radarFill, borderColor: radarBorder, borderWidth: 1.5, pointBackgroundColor: radarBorder, pointBorderColor: radarBorder, pointRadius: 4, pointHoverRadius: 5 }]
+      labels: ['Relationship Building','Communication','Resilience','Curiosity','Stakeholder Management','Product Thinking','Discovery/Qualification','Outbound Prospecting','Pipeline Management','Enterprise Software','Consulting','AI Early Adopter'],
+      datasets: [{ data: [9.5,9,9,9,9,9,8,8,8,7,7,7], backgroundColor: radarFill, borderColor: radarBorder, borderWidth: 1.5, pointBackgroundColor: radarBorder, pointBorderColor: radarBorder, pointRadius: 4, pointHoverRadius: 5 }]
     },
     options: {
       responsive: true, maintainAspectRatio: false,
@@ -387,12 +387,4 @@ function toggleProjects(e) {
   var chevron = e.currentTarget.querySelector('svg:last-child');
   if (sub.style.display === 'none') {
     sub.style.display = 'block';
-    chevron.style.transform = 'rotate(180deg)';
-  } else {
-    sub.style.display = 'none';
-    chevron.style.transform = 'rotate(0)';
-  }
-}
-</script>
-</body>
-</html>
+    chevron.st
