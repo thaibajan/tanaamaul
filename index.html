@@ -167,7 +167,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
   .card { padding: 20px; }
   .exp-number { font-size: 24px; }
 
-  .radar-wrapper { max-width: 100%; height: 380px; }
+  .radar-wrapper { max-width: 100%; height: 300px; }
 
   .metrics-grid { grid-template-columns: 1fr; gap: 12px; }
   .metric-number { font-size: 24px; }
@@ -342,7 +342,7 @@ function buildChart() {
   radarChart = new Chart(ctx, {
     type: 'radar',
     data: {
-      labels: ['Relationship Building','Communication','Resilience','Curiosity','Stakeholder Mgmt','Product Thinking','Discovery / Qual.','Outbound Prospecting','Pipeline Mgmt','Enterprise Software','Consulting','AI Early Adopter'],
+      labels: ['Relationship Building','Communication','Resilience','Curiosity','Stakeholder Mgmt','Product Thinking','Discovery / Qual.','Outbound Prospecting','Pipeline Mgmt','Enterprise','Consulting','AI Early Adopter'],
       datasets: [{ data: [9.5,9,9,9,9,9,8,8,8,8,8,8], backgroundColor: radarFill, borderColor: radarBorder, borderWidth: 1.5, pointBackgroundColor: radarBorder, pointBorderColor: radarBorder, pointRadius: 4, pointHoverRadius: 5 }]
     },
     options: {
