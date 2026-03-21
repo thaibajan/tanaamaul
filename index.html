@@ -43,7 +43,6 @@
 
 body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-primary); display: flex; min-height: 100vh; transition: background 0.3s, color 0.3s; }
 
-/* ===== SIDEBAR ===== */
 .sidebar { width: 210px; min-height: 100vh; background: var(--bg-sidebar); border-right: 1px solid var(--border); padding: 24px 16px; display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; z-index: 100; transition: width 0.3s ease, padding 0.3s ease, transform 0.3s ease, background 0.3s, border-color 0.3s; overflow: hidden; }
 .sidebar.collapsed { width: 0; padding-left: 0; padding-right: 0; border-right-color: transparent; }
 .sidebar.collapsed .sidebar-inner { opacity: 0; pointer-events: none; }
@@ -53,24 +52,20 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 .sidebar-chevron { width: 16px; height: 16px; color: var(--text-muted); cursor: pointer; transition: transform 0.3s ease, color 0.2s; flex-shrink: 0; }
 .sidebar-chevron:hover { color: var(--text-primary); }
 
-/* Desktop open button (when sidebar collapsed) */
 .sidebar-open-btn { position: fixed; top: 28px; left: 16px; z-index: 99; width: 28px; height: 28px; display: none; align-items: center; justify-content: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
 .sidebar-open-btn.visible { opacity: 1; pointer-events: auto; display: flex; }
 .sidebar-open-btn svg { width: 14px; height: 14px; color: var(--text-muted); }
 .sidebar-open-btn:hover { box-shadow: var(--shadow-sm); }
 .sidebar-open-btn:hover svg { color: var(--text-primary); }
 
-/* Mobile hamburger */
 .mobile-header { display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 90; background: var(--bg-sidebar); border-bottom: 1px solid var(--border); padding: 16px 20px; align-items: center; justify-content: space-between; transition: background 0.3s, border-color 0.3s; }
 .mobile-header span { font-weight: 500; font-size: 16px; color: var(--text-primary); }
 .hamburger { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: none; border: none; padding: 0; }
 .hamburger svg { width: 22px; height: 22px; color: var(--text-primary); }
 
-/* Mobile overlay */
 .sidebar-overlay { display: none; position: fixed; inset: 0; background: var(--overlay); z-index: 99; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; }
 .sidebar-overlay.active { opacity: 1; pointer-events: auto; }
 
-/* ===== SIDEBAR CONTENTS ===== */
 .theme-toggle { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; padding: 0 4px; }
 .theme-toggle svg { width: 14px; height: 14px; color: var(--text-muted); flex-shrink: 0; transition: color 0.2s; }
 .theme-toggle svg.active-icon { color: var(--accent); }
@@ -96,7 +91,6 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 .sidebar-about-link .avatar { width: 24px; height: 24px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
 .sidebar-about-link .avatar img { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; }
 
-/* ===== MAIN ===== */
 .main { margin-left: 210px; flex: 1; padding: 64px 48px; display: flex; flex-direction: row; gap: 48px; transition: margin-left 0.3s ease; }
 .main.expanded { margin-left: 0; }
 
@@ -142,7 +136,6 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ===== TABLET ===== */
 @media (max-width: 1024px) {
   .main { flex-direction: column; gap: 32px; }
   .left-col { width: 100%; }
@@ -151,9 +144,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
   .radar-wrapper { max-width: 100%; }
 }
 
-/* ===== MOBILE ===== */
 @media (max-width: 768px) {
-  /* Show mobile header, hide desktop sidebar by default */
   .mobile-header { display: flex; }
   .sidebar { transform: translateX(-100%); width: 260px; border-right: none; box-shadow: 4px 0 24px rgba(0,0,0,0.1); }
   .sidebar.mobile-open { transform: translateX(0); }
@@ -185,7 +176,6 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 </head>
 <body>
 
-<!-- MOBILE HEADER -->
 <div class="mobile-header">
   <span>Tanaa Maul</span>
   <button class="hamburger" id="hamburgerBtn">
@@ -193,10 +183,8 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
   </button>
 </div>
 
-<!-- SIDEBAR OVERLAY (mobile) -->
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-<!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-inner">
   <div class="sidebar-header">
@@ -233,12 +221,10 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
   </div>
 </aside>
 
-<!-- Desktop open button -->
 <button class="sidebar-open-btn" id="sidebarOpenBtn">
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
 </button>
 
-<!-- MAIN CONTENT -->
 <main class="main" id="mainContent">
   <div class="left-col">
     <p class="greeting">Hello, I'm Tanaa</p>
@@ -259,9 +245,9 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
   <div class="right-col">
     <div class="card">
       <div class="experience-bars">
-        <div class="exp-row"><div class="exp-text"><span class="exp-number">4+</span><span class="exp-label">years / in startups & independent ventures</span></div><div class="exp-bar-track"><div class="exp-bar-fill blue"></div></div></div>
-        <div class="exp-row"><div class="exp-text"><span class="exp-number">10+</span><span class="exp-label">years / in commercial tech & enterprise</span></div><div class="exp-bar-track"><div class="exp-bar-fill green"></div></div></div>
-        <div class="exp-row"><div class="exp-text"><span class="exp-number">5+</span><span class="exp-label">years / in sales & business development</span></div><div class="exp-bar-track"><div class="exp-bar-fill purple"></div></div></div>
+        <div class="exp-row"><div class="exp-text"><span class="exp-number">4+</span><span class="exp-label">years / in startups &amp; independent ventures</span></div><div class="exp-bar-track"><div class="exp-bar-fill blue"></div></div></div>
+        <div class="exp-row"><div class="exp-text"><span class="exp-number">10+</span><span class="exp-label">years / in commercial tech &amp; enterprise</span></div><div class="exp-bar-track"><div class="exp-bar-fill green"></div></div></div>
+        <div class="exp-row"><div class="exp-text"><span class="exp-number">5+</span><span class="exp-label">years / in sales &amp; business development</span></div><div class="exp-bar-track"><div class="exp-bar-fill purple"></div></div></div>
       </div>
     </div>
 
@@ -280,30 +266,27 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 </main>
 
 <script>
-// Elements
-const sidebar = document.getElementById('sidebar');
-const chevron = document.getElementById('sidebarChevron');
-const openBtn = document.getElementById('sidebarOpenBtn');
-const mainContent = document.getElementById('mainContent');
-const hamburger = document.getElementById('hamburgerBtn');
-const overlay = document.getElementById('sidebarOverlay');
-const isMobile = () => window.innerWidth <= 768;
+var sidebar = document.getElementById('sidebar');
+var chevron = document.getElementById('sidebarChevron');
+var openBtn = document.getElementById('sidebarOpenBtn');
+var mainContent = document.getElementById('mainContent');
+var hamburger = document.getElementById('hamburgerBtn');
+var overlay = document.getElementById('sidebarOverlay');
+var isMobile = function() { return window.innerWidth <= 768; };
 
-// Desktop sidebar collapse
-chevron.addEventListener('click', () => {
+chevron.addEventListener('click', function() {
   if (isMobile()) return;
   sidebar.classList.add('collapsed');
   mainContent.classList.add('expanded');
   openBtn.classList.add('visible');
 });
 
-openBtn.addEventListener('click', () => {
+openBtn.addEventListener('click', function() {
   sidebar.classList.remove('collapsed');
   mainContent.classList.remove('expanded');
   openBtn.classList.remove('visible');
 });
 
-// Mobile hamburger
 function openMobileMenu() {
   sidebar.classList.add('mobile-open');
   overlay.classList.add('active');
@@ -315,58 +298,47 @@ function closeMobileMenu() {
   document.body.style.overflow = '';
 }
 
-hamburger.addEventListener('click', () => {
-  if (sidebar.classList.contains('mobile-open')) {
-    closeMobileMenu();
-  } else {
-    openMobileMenu();
-  }
+hamburger.addEventListener('click', function() {
+  if (sidebar.classList.contains('mobile-open')) { closeMobileMenu(); } else { openMobileMenu(); }
 });
 overlay.addEventListener('click', closeMobileMenu);
 
-// Close mobile menu on nav click
-document.querySelectorAll('.sidebar .nav-item').forEach(item => {
-  item.addEventListener('click', () => { if (isMobile()) closeMobileMenu(); });
+document.querySelectorAll('.sidebar .nav-item').forEach(function(item) {
+  item.addEventListener('click', function() { if (isMobile()) closeMobileMenu(); });
 });
 
-// Handle resize
-window.addEventListener('resize', () => {
-  if (!isMobile()) {
-    closeMobileMenu();
-    sidebar.classList.remove('mobile-open');
-  }
+window.addEventListener('resize', function() {
+  if (!isMobile()) { closeMobileMenu(); sidebar.classList.remove('mobile-open'); }
 });
 
-// Theme toggle
-const toggle = document.getElementById('themeToggle');
-const html = document.documentElement;
-const sunIcon = document.getElementById('sunIcon');
-const moonIcon = document.getElementById('moonIcon');
+var toggle = document.getElementById('themeToggle');
+var html = document.documentElement;
+var sunIcon = document.getElementById('sunIcon');
+var moonIcon = document.getElementById('moonIcon');
 
 function updateIcons() {
-  const isDark = html.getAttribute('data-theme') === 'dark';
+  var isDark = html.getAttribute('data-theme') === 'dark';
   sunIcon.classList.toggle('active-icon', !isDark);
   moonIcon.classList.toggle('active-icon', isDark);
 }
 
-toggle.addEventListener('click', () => {
-  const isDark = html.getAttribute('data-theme') === 'dark';
+toggle.addEventListener('click', function() {
+  var isDark = html.getAttribute('data-theme') === 'dark';
   html.setAttribute('data-theme', isDark ? 'light' : 'dark');
   updateIcons();
   buildChart();
 });
 
-// Chart
-let radarChart;
+var radarChart;
 function buildChart() {
-  const isDark = html.getAttribute('data-theme') === 'dark';
-  const gridColor = isDark ? '#27272a' : '#e4e4e7';
-  const labelColor = isDark ? '#fafafa' : '#18181b';
-  const radarFill = isDark ? 'rgba(139,92,246,0.2)' : 'rgba(120,40,200,0.12)';
-  const radarBorder = isDark ? '#8b5cf6' : '#7828C8';
+  var isDark = html.getAttribute('data-theme') === 'dark';
+  var gridColor = isDark ? '#27272a' : '#e4e4e7';
+  var labelColor = isDark ? '#fafafa' : '#18181b';
+  var radarFill = isDark ? 'rgba(139,92,246,0.2)' : 'rgba(120,40,200,0.12)';
+  var radarBorder = isDark ? '#8b5cf6' : '#7828C8';
 
   if (radarChart) radarChart.destroy();
-  const ctx = document.getElementById('radarChart').getContext('2d');
+  var ctx = document.getElementById('radarChart').getContext('2d');
   radarChart = new Chart(ctx, {
     type: 'radar',
     data: {
@@ -381,16 +353,17 @@ function buildChart() {
   });
 }
 buildChart();
+
 function toggleProjects(e) {
   e.preventDefault();
   var sub = document.getElementById('projectsSub');
-  var chevron = e.currentTarget.querySelector('svg:last-child');
+  var chev = e.currentTarget.querySelector('svg:last-child');
   if (sub.style.display === 'none') {
     sub.style.display = 'block';
-    chevron.style.transform = 'rotate(180deg)';
+    chev.style.transform = 'rotate(180deg)';
   } else {
     sub.style.display = 'none';
-    chevron.style.transform = 'rotate(0)';
+    chev.style.transform = 'rotate(0)';
   }
 }
 </script>
